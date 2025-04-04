@@ -286,7 +286,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
 
     return mult
 
-def calc_damage(attacker: TrainedPokemon, target: TrainedPokemon, TM: TM, multiplier: float) -> float:
+def calc_damage(attacker: TrainedPokemon, target: TrainedPokemon, TM: TM) -> float:
     damage = TM[3]
     STAB = 1
     if TM[3] in [attacker[0][1], attacker[0][2]]:

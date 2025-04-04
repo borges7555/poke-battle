@@ -1,39 +1,35 @@
-from pokemon_colorscripts import *
+from pokemon_colorscripts import show_pokemon_by_name
 
-def show_pictures(names: list) -> bool:
-    aux = []
-    for i in range(2):
-        if "alolan" in names[i]:
-            aux.append([names[i].split(" ")[1], "alola"])
-        elif "galarian" in names:
-            aux.append(names[i].split(" ")[1], "galar")
-        elif "hisuian" in names:
-            aux.append(names[i].split(" ")[1], "hisui")
-        elif "paldean" in names[i]:
-            aux.append(names[i].split(" ")[1], "paldea")
-        elif "mega" in names[i]:
-            if len(names[i].split(" ")) == 2:
-                aux.append(names[i].split(" ")[1], "mega")
-            elif 'x' in names[i]:
-                aux.append(names[i].split(" ")[1], "mega-x")
-            elif 'y' in names[i]:
-                aux.append(names[i].split(" ")[1], "mega-y")
-        elif "primal" in names[i]:
-            aux.append(names[i].split(" ")[1], "primal")
-        elif "incarnate" in names[i]:
-            aux.append(names[i].split(" ")[0])
-        elif len(names[i].split(" ")) == 2:
-            if not check_if_exists(names[i].split(" ")[0], names[i].split(" ")[1]):
-                if not check_if_exists(names[i].split(" ")[1], names[i].split(" ")[0]):
-                    if not check_if_exists(names[i].split(" ")[0] + "-" + names[i].split(" ")[1]):
-                        i = i
-                    else:
-                        aux.append(names[i].split(" ")[0] + "-" + names[i].split(" ")[1])
+def show_picture(name: str) -> bool:
+    if "alolan" in name:
+        return show_pokemon_by_name(name.split(" ")[1], "alola")
+    elif "galarian" in name:
+        return show_pokemon_by_name(name.split(" ")[1], "galar")
+    elif "hisuian" in name:
+        return show_pokemon_by_name(name.split(" ")[1], "hisui")
+    elif "paldean" in name:
+        return show_pokemon_by_name(name.split(" ")[1], "paldea")
+    elif "mega" in name:
+        if len(name.split(" ")) == 2:
+            return show_pokemon_by_name(name.split(" ")[1], "mega")
+        elif 'x' in name:
+            return show_pokemon_by_name(name.split(" ")[1], "mega-x")
+        elif 'y' in name:
+            return show_pokemon_by_name(name.split(" ")[1], "mega-y")
+    elif "primal" in name:
+        return show_pokemon_by_name(name.split(" ")[1], "primal")
+    elif "incarnate" in name:
+        return show_pokemon_by_name(name.split(" ")[0])
+    elif len(name.split(" ")) == 2:
+        if not show_pokemon_by_name(name.split(" ")[0], name.split(" ")[1]):
+            if not show_pokemon_by_name(name.split(" ")[1], name.split(" ")[0]):
+                if not show_pokemon_by_name(name.split(" ")[0] + "-" + name.split(" ")[1]):
+                    return False
                 else:
-                    aux.append(names[i].split(" ")[1], names[i].split(" ")[0])
+                    return True
             else:
-                aux.append(names[i].split(" ")[0], names[i].split(" ")[1])
+                return True
         else:
-            aux.append([names[i], ""])
-        
-    return show_pokemon_by_name(aux[0][0], aux[1][0], aux[0][1], aux[1][1])
+            return True
+    else:
+        return show_pokemon_by_name(name)
