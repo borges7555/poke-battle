@@ -2,6 +2,7 @@ from game import game
 from prints import help
 from create_map import *
 from user_create_trainer import *
+from create_defaul_trainers import *
 import sys
 
 def main() -> int:
@@ -24,9 +25,10 @@ def main() -> int:
     play_again = True
     pokemon_data = create_pokemon_map_from_csv()
     tm_data = create_tm_map_from_csv()
+    trainers = create_default_trainers(pokemon_data, tm_data)
     while play_again:
         trainer = user_create_trainer(pokemon_data, tm_data)
-        game(trainer)
+        game(trainer, trainers)
         print("Do you want to play again? (y/n)")
         aux = input()
         while aux != 'y' and aux != 'n':

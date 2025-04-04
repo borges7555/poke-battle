@@ -1,8 +1,8 @@
-from typing import List
+from typing import List, Tuple
 
-TM_Category = "Physical" | "Special" | "Status"
-Type = "Normal" | "Fire" | "Water" | "Electric" | "Grass" | "Ice" | "Fighting" | "Poison" | "Ground" | "Flying" | "Psychic" | "Bug" | "Rock" | "Ghost" | "Dragon" | "Dark" | "Steel" | "Fairy"
-TM = List[str, Type, TM_Category, int, int]
-TrainedPokemon = List[List, TM, TM, TM, TM]
-PokemonTeam = List[TrainedPokemon, TrainedPokemon, TrainedPokemon, TrainedPokemon, TrainedPokemon, TrainedPokemon]
-Trainer = List[str, PokemonTeam]
+TM_Category = "Physical" or "Special" or "Status"
+Type = "Normal" or "Fire" or "Water" or "Electric" or "Grass" or "Ice" or "Fighting" or "Poison" or "Ground" or "Flying" or "Psychic" or "Bug" or "Rock" or "Ghost" or "Dragon" or "Dark" or "Steel" or "Fairy"
+TM = Tuple[str, Type, TM_Category, int, int]
+TrainedPokemon = Tuple[List, TM, TM, TM, TM]
+PokemonTeam = Tuple[TrainedPokemon, TrainedPokemon, TrainedPokemon, TrainedPokemon, TrainedPokemon, TrainedPokemon]
+Trainer = Tuple[str, PokemonTeam]
