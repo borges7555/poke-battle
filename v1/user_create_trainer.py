@@ -18,8 +18,8 @@ def user_create_trainer(pokemon_data: list, tm_data) -> Trainer:
             print("Please choose a valid pokemon.")
         else:
             chosen_pokemon.append(pokemon)
-            current_hp = pokemon[4]
-            chosen_pokemon.append(current_hp)
+            current_stats = pokemon[4:]
+            chosen_pokemon.append(current_stats)
             k = 0
             while k < 4:
                 print(f"\nChoose the TM number {k + 1} for {pokemon[0]}:")

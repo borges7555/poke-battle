@@ -15,16 +15,18 @@ def chose_attack(trainer: Trainer, pk_in_battle_user: int, opponent: Trainer, pk
     chosen_move = trainer[1][pk_in_battle_user][int(attack)]
     damage = calc_damage(trainer[1][pk_in_battle_user], opponent[1][pk_in_battle_opponent], chosen_move)
     print(f"{chosen_move[0]} dealt {damage} damage to {opponent[1][pk_in_battle_opponent][0][0]}.")
-    if opponent[1][pk_in_battle_opponent][1] - damage < 0:
+    if opponent[1][pk_in_battle_opponent][1][0] - damage < 0:
         return 0
     
     return opponent[1][pk_in_battle_opponent][1] - damage
 
 
 def chose_switch(trainer: Trainer, pk_in_battle_user: int) -> int:
+    id = 0
     print("\nChoose a Pokémon to switch to:")
-    
 
+    return id
+    
 
 def chose_run(trainer: Trainer, opponent: Trainer):
     print("\nYou ran away.")

@@ -294,11 +294,11 @@ def calc_damage(attacker: TrainedPokemon, target: TrainedPokemon, TM: TM) -> flo
 
     attack, defense = 0
     if TM[2] == "Physical":
-        attack = attacker[0][5]
-        defense = target[0][7]
+        attack = attacker[1][1]
+        defense = target[1][2]
     elif TM[2] == "Special":
-        attack = attacker[0][6]
-        defense = target[0][8]
+        attack = attacker[1][3]
+        defense = target[1][4]
 
     effectiveness = calc_effectiveness(TM[1], target)
 
