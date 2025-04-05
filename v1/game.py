@@ -5,6 +5,7 @@ from battle_calcs import *
 from show_pic import *
 from chosen_action import *
 from opponent_action import *
+import random
 
 def game(trainer: Trainer, trainers: list):
     print("\nChoose a trainer to fight against:")
@@ -26,7 +27,7 @@ def game(trainer: Trainer, trainers: list):
     opponent_pokemon_down = 0
 
     pk_in_batlle_user = 0
-    pk_in_batlle_opponent = 0
+    pk_in_batlle_opponent = random.randint(0, 5)
 
     opponent_speed = opponent[1][pk_in_batlle_opponent][1][5]
     user_speed = trainer[1][pk_in_batlle_user][1][5]

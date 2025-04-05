@@ -18,28 +18,35 @@ def chose_attack(trainer: Trainer, pk_in_battle_user: int, opponent: Trainer, pk
     if opponent[1][pk_in_battle_opponent][1][0] - damage < 0:
         return 0
     
-    return opponent[1][pk_in_battle_opponent][1] - damage
+    return opponent[1][pk_in_battle_opponent][1][0] - damage
 
 
 def chose_switch(trainer: Trainer, pk_in_battle_user: int) -> int:
-    id = ""
-    valid_ids = []
-    i = 0
+    pokemon_hp = 0
     print("\nChoose a Pokémon to switch to:")
-    for pokemon in trainer[1][:pk_in_battle_user]+trainer[1][pk_in_battle_user+1:]:#TODO: fix bug when pk_in_battle_user is 5
-        i += 1
-        valid_ids.append(str(i))
-        print(f"{str(i)}. {pokemon[0][0]}")
-        for move in pokemon[1:]:
-            print(f"    - {move[0]}")
+    while pokemon_hp == 0:
+        valid_ids = []
+        i = 0
+        aux1 = trainer[1][:pk_in_battle_user] + trainer[1][pk_in_battle_user + 1:] if pk_in_battle_user != 5 else trainer[1][:-1]
+        for pokemon in aux1:
+            i += 1
+            valid_ids.append(str(i))
+            print(f"{str(i)}. {pokemon[0][0]}")
+            for move in pokemon[2:]:
+                print(f"    - {move[0]}")
 
-    id = input()
-    
-    while id not in valid_ids:
-        print("\nInvalid input. Try again.")
-        id = input
+        aux2 = input()
+        
+        while aux2 not in valid_ids:
+            print("\nInvalid input. Try again.")
+            aux2 = input()
 
-    return (int(id)-1)
+        id = int(aux2)-1 if int(aux2)-1 < pk_in_battle_user else int(aux2)
+        pokemon_hp = trainer[1][id][1][0]
+        if pokemon_hp == 0:
+            print("\nThis Pokémon is fainted. Choose another one.")
+
+    return id
     
 
 def chose_run(trainer: Trainer, opponent: Trainer):
