@@ -286,13 +286,14 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
 
     return mult
 
-def calc_damage(attacker: TrainedPokemon, target: TrainedPokemon, TM: TM) -> float:
+def calc_damage(attacker: TrainedPokemon, target: TrainedPokemon, TM: TM) -> int:
     damage = TM[3]
     STAB = 1
     if TM[3] in [attacker[0][1], attacker[0][2]]:
         STAB = 1.5
 
-    attack, defense = 0
+    attack = 1
+    defense = 1
     if TM[2] == "Physical":
         attack = attacker[1][1]
         defense = target[1][2]
@@ -304,4 +305,4 @@ def calc_damage(attacker: TrainedPokemon, target: TrainedPokemon, TM: TM) -> flo
 
     damage = ((21*damage*(attack/defense))/50 + 2)*STAB*effectiveness
     
-    return damage
+    return int(damage)
