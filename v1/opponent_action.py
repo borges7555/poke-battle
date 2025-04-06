@@ -11,7 +11,7 @@ def opponent_choose_action(bot_trainer: Trainer, bot_pk_in_battle: int, user_tra
 
 
 def opponent_attacks(bot_traner: Trainer, bot_pk_in_battle: int, user_trainer: Trainer, user_pk_in_battle: int) -> int:
-    hp_left = 0
+    hp_left = 1
     
     return hp_left
 

@@ -25,6 +25,7 @@ def game(trainer: Trainer, trainers: list):
     opponent = trainers[aux - 1]
     user_pokemon_down = 0
     opponent_pokemon_down = 0
+    kos_to_win = 1 #change to 6
 
     pk_in_batlle_user = 0
     pk_in_batlle_opponent = random.randint(0, 5)
@@ -34,17 +35,11 @@ def game(trainer: Trainer, trainers: list):
     opponent_hp = opponent[1][pk_in_batlle_opponent][1][0]
     user_hp = trainer[1][pk_in_batlle_user][1][0]
 
-    while not user_pokemon_down == 6 or opponent_pokemon_down == 6:
-        if show_picture(opponent[1][pk_in_batlle_opponent][0][0].lower()):
-            print(f"HP: {opponent_hp}/{opponent[1][pk_in_batlle_opponent][0][4]}")
-        else:
-            print(f"Couldn't show picture of {opponent[1][pk_in_batlle_opponent][0][0]}")
+    print(f"\n{opponent[0]} sent out {opponent[1][pk_in_batlle_opponent][0][0]}.")
+    print(f"{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
 
-        if show_picture(trainer[1][pk_in_batlle_user][0][0].lower()):
-            print(f"HP: {user_hp}/{trainer[1][pk_in_batlle_user][0][4]}")
-        else:
-            print(f"Couldn't show picture of {trainer[1][pk_in_batlle_user][0][0]}")
-
+    while user_pokemon_down != kos_to_win and opponent_pokemon_down != kos_to_win:
+        print_pokemons_in_battle(trainer, pk_in_batlle_user, user_hp, opponent, pk_in_batlle_opponent, opponent_hp)
         print("\nWhat will you do?")
         print("1. Attack")
         print("2. Switch Pokémon")
@@ -59,49 +54,115 @@ def game(trainer: Trainer, trainers: list):
             chose_run(trainer, opponent)
 
         elif opponent_action == "switch" and action == "2":
+            #opponent switches
+            print(f"\n{opponent[0]} retrieved {opponent[1][pk_in_batlle_opponent][0][0]}.")
             pk_in_batlle_opponent = opponent_switch(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
             opponent_hp = opponent[1][pk_in_batlle_opponent][1][0]
             opponent_speed = opponent[1][pk_in_batlle_opponent][1][5]
+            print(f"{opponent[0]} sent out {opponent[1][pk_in_batlle_opponent][0][0]}.")
+            #user switches
+            print(f"{trainer[0]} retrieved {trainer[1][pk_in_batlle_user][0][0]}.")
             pk_in_batlle_user = chose_switch(trainer, pk_in_batlle_user)
             user_hp = trainer[1][pk_in_batlle_user][1][0]
             user_speed = trainer[1][pk_in_batlle_user][1][5]
+            print(f"{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
 
         elif opponent_action == "attack" and action == "2":
+            #user switches
+            print(f"\n{trainer[0]} retrieved {trainer[1][pk_in_batlle_user][0][0]}.")
             pk_in_batlle_user = chose_switch(trainer, pk_in_batlle_user)
             user_hp = trainer[1][pk_in_batlle_user][1][0]
             user_speed = trainer[1][pk_in_batlle_user][1][5]
+            print(f"{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
+            print_pokemons_in_battle(trainer, pk_in_batlle_user, user_hp, opponent, pk_in_batlle_opponent, opponent_hp)
             #opponent attacks
             user_hp = opponent_attacks(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
             trainer[1][pk_in_batlle_user][1][0] = user_hp
-            #TODO:check if user pokemon is knocked out
+            #check if user pokemon is knocked out
+            if user_hp == 0:
+                print(f"\n{trainer[0]}'s {trainer[1][pk_in_batlle_user][0][0]} fainted.")
+                user_pokemon_down += 1
+                if user_pokemon_down != kos_to_win:
+                    pk_in_batlle_user = chose_switch(trainer, pk_in_batlle_user)
+                    user_hp = trainer[1][pk_in_batlle_user][1][0]
+                    user_speed = trainer[1][pk_in_batlle_user][1][5]      
+                    print(f"{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
 
         elif opponent_action == "switch" and action == "1":
+            #opponent switches
+            print(f"\n{opponent[0]} retrieved {opponent[1][pk_in_batlle_opponent][0][0]}.")
             pk_in_batlle_opponent = opponent_switch(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
             opponent_hp = opponent[1][pk_in_batlle_opponent][1][0]
             opponent_speed = opponent[1][pk_in_batlle_opponent][1][5]
+            print(f"{opponent[0]} sent out {opponent[1][pk_in_batlle_opponent][0][0]}.")
+            print_pokemons_in_battle(trainer, pk_in_batlle_user, user_hp, opponent, pk_in_batlle_opponent, opponent_hp)
             #user attacks
             opponent_hp = chose_attack(trainer, pk_in_batlle_user, opponent, pk_in_batlle_opponent)
             opponent[1][pk_in_batlle_opponent][1][0] = opponent_hp
-            #TODO:check if opponent pokemon is knocked out 
+            #check if opponent pokemon is knocked out 
+            if opponent_hp == 0:
+                print(f"\n{opponent[0]}'s {opponent[1][pk_in_batlle_opponent][0][0]} fainted.")
+                opponent_pokemon_down += 1
+                if opponent_pokemon_down != kos_to_win:
+                    pk_in_batlle_opponent = opponent_switch(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
+                    opponent_hp = opponent[1][pk_in_batlle_opponent][1][0]
+                    opponent_speed = opponent[1][pk_in_batlle_opponent][1][5]
+                    print(f"{opponent[0]} sent out {opponent[1][pk_in_batlle_opponent][0][0]}.")
 
         elif opponent_speed >= user_speed:    
             if opponent_action == "attack" and action == "1":
+                #opponent attacks
                 user_hp = opponent_attacks(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
                 trainer[1][pk_in_batlle_user][1][0] = user_hp
-                #TODO:check if user pokemon is knocked out
-                opponent_hp = chose_attack(trainer, pk_in_batlle_user, opponent, pk_in_batlle_opponent)
-                opponent[1][pk_in_batlle_opponent][1][0] = opponent_hp
-                #TODO:check if opponent pokemon is knocked out
+                #check if user pokemon is knocked out
+                if user_hp == 0:
+                    print(f"\n{trainer[0]}'s {trainer[1][pk_in_batlle_user][0][0]} fainted.")
+                    user_pokemon_down += 1
+                    if user_pokemon_down != kos_to_win:
+                        pk_in_batlle_user = chose_switch(trainer, pk_in_batlle_user)
+                        user_hp = trainer[1][pk_in_batlle_user][1][0]
+                        user_speed = trainer[1][pk_in_batlle_user][1][5]
+                        print(f"{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
+                else:
+                    #user attacks if pokemon wasnt knocked out
+                    opponent_hp = chose_attack(trainer, pk_in_batlle_user, opponent, pk_in_batlle_opponent)
+                    opponent[1][pk_in_batlle_opponent][1][0] = opponent_hp
+                    #check if opponent pokemon is knocked out
+                    if opponent_hp == 0:
+                        print(f"\n{opponent[0]}'s {opponent[1][pk_in_batlle_opponent][0][0]} fainted.")
+                        opponent_pokemon_down += 1
+                        if opponent_pokemon_down != kos_to_win:
+                            pk_in_batlle_opponent = opponent_switch(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
+                            opponent_hp = opponent[1][pk_in_batlle_opponent][1][0]
+                            opponent_speed = opponent[1][pk_in_batlle_opponent][1][5]
+                            print(f"{opponent[0]} sent out {opponent[1][pk_in_batlle_opponent][0][0]}.")
         else:
             if opponent_action == "attack" and action == "1":
+                #user attacks
                 opponent_hp = chose_attack(trainer, pk_in_batlle_user, opponent, pk_in_batlle_opponent)
                 opponent[1][pk_in_batlle_opponent][1][0] = opponent_hp
-                #TODO:check if opponent pokemon is knocked out
-                user_hp = opponent_attacks(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
-                trainer[1][pk_in_batlle_user][1][0] = user_hp
-                #TODO:check if user pokemon is knocked out
-
-        break
+                #check if opponent pokemon is knocked out
+                if opponent_hp == 0:
+                    print(f"\n{opponent[0]}'s {opponent[1][pk_in_batlle_opponent][0][0]} fainted.")
+                    opponent_pokemon_down += 1
+                    if opponent_pokemon_down != kos_to_win:
+                        pk_in_batlle_opponent = opponent_switch(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
+                        opponent_hp = opponent[1][pk_in_batlle_opponent][1][0]
+                        opponent_speed = opponent[1][pk_in_batlle_opponent][1][5]
+                        print(f"{opponent[0]} sent out {opponent[1][pk_in_batlle_opponent][0][0]}.")
+                else:
+                    #opponent attacks if pokemon wasnt knocked out
+                    user_hp = opponent_attacks(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
+                    trainer[1][pk_in_batlle_user][1][0] = user_hp
+                    #check if user pokemon is knocked out
+                    if user_hp == 0:
+                        print(f"\n{trainer[0]}'s {trainer[1][pk_in_batlle_user][0][0]} fainted.")
+                        user_pokemon_down += 1
+                        if user_pokemon_down != kos_to_win:
+                            pk_in_batlle_user = chose_switch(trainer, pk_in_batlle_user)
+                            user_hp = trainer[1][pk_in_batlle_user][1][0]
+                            user_speed = trainer[1][pk_in_batlle_user][1][5]
+                            print(f"{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
 
     print(f"\n{trainer[0]} won against {opponent[0]}!")
 
