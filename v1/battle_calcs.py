@@ -1,3 +1,4 @@
+import random
 from data_types import *
 from returns import *
 
@@ -301,7 +302,19 @@ def calc_damage(attacker: TrainedPokemon, target: TrainedPokemon, TM: TM) -> int
         attack = attacker[1][3]
         defense = target[1][4]
 
+    if TM[4] < 100:
+        aux = random.randint(1, 100)
+        if aux > TM[4]:
+            print(f"\n{target[0][0]} avoided the attack.")
+            return 0
+        
     effectiveness = calc_effectiveness(TM[1], target)
+    if 0 < effectiveness <= 0.5:
+        print("\nIt's not very effective.")
+    elif effectiveness >= 2:
+        print("\nIt's super effective.")
+    elif effectiveness == 0:
+        print(f"\nIt's doesn't affect {target[0][0]}.") 
 
     damage = ((21*damage*(attack/defense))/50 + 2)*STAB*effectiveness
     

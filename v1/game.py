@@ -1,3 +1,4 @@
+import random
 from prints import *
 from create_defaul_trainers import *
 from data_types import *
@@ -5,7 +6,6 @@ from battle_calcs import *
 from show_pic import *
 from chosen_action import *
 from opponent_action import *
-import random
 
 def game(trainer: Trainer, trainers: list):
     print("\nChoose a trainer to fight against:")
@@ -74,7 +74,7 @@ def game(trainer: Trainer, trainers: list):
             user_hp = trainer[1][pk_in_batlle_user][1][0]
             user_speed = trainer[1][pk_in_batlle_user][1][5]
             print(f"{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
-            print_pokemons_in_battle(trainer, pk_in_batlle_user, user_hp, opponent, pk_in_batlle_opponent, opponent_hp)
+            print_pokemons_in_battle(trainer, pk_in_batlle_user, user_hp, opponent, pk_in_batlle_opponent, opponent_hp) #TODO:only print after opponent chooses attack
             #opponent attacks
             user_hp = opponent_attacks(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
             trainer[1][pk_in_batlle_user][1][0] = user_hp
@@ -95,7 +95,7 @@ def game(trainer: Trainer, trainers: list):
             opponent_hp = opponent[1][pk_in_batlle_opponent][1][0]
             opponent_speed = opponent[1][pk_in_batlle_opponent][1][5]
             print(f"{opponent[0]} sent out {opponent[1][pk_in_batlle_opponent][0][0]}.")
-            print_pokemons_in_battle(trainer, pk_in_batlle_user, user_hp, opponent, pk_in_batlle_opponent, opponent_hp)
+            print_pokemons_in_battle(trainer, pk_in_batlle_user, user_hp, opponent, pk_in_batlle_opponent, opponent_hp) #TODO:only print after user chooses attack
             #user attacks
             opponent_hp = chose_attack(trainer, pk_in_batlle_user, opponent, pk_in_batlle_opponent)
             opponent[1][pk_in_batlle_opponent][1][0] = opponent_hp

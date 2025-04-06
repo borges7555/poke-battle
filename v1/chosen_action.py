@@ -13,8 +13,9 @@ def chose_attack(trainer: Trainer, pk_in_battle_user: int, opponent: Trainer, pk
         attack = input()
     
     chosen_move = trainer[1][pk_in_battle_user][int(attack)+1]
+    print(f"\n{trainer[1][pk_in_battle_user][0][0]} used {chosen_move[0]}.")
     damage = calc_damage(trainer[1][pk_in_battle_user], opponent[1][pk_in_battle_opponent], chosen_move)
-    print(f"\n{trainer[1][pk_in_battle_user][0][0]}'s {chosen_move[0]} dealt {damage} damage to {opponent[1][pk_in_battle_opponent][0][0]}.")
+    print(f"\nIt did {damage} damage.")
     if opponent[1][pk_in_battle_opponent][1][0] - damage < 0:
         return 0
     
