@@ -6,25 +6,30 @@ def help():
     print("You win the battle by knocking out all the opponent's pokemons.")
     print("The battle is a 1v1, and each trainer has 6 pokemons.")
     print("First, you have to create your team of 6 Pokemons.")
+    print("While creating your team, you can type <pokemon_name> or <tm_name> plus '-s' to be shown its stats.")
     print("Then, you choose the trainers you want to fight against.")
     print("The order of which pokemon moves first is based on its speed stat.") 
     print("In each turn, you have to choose an attack for your pokemon to use.")
 
 
-def print_stats(name: str, data: list):
-    info = next((row for row in data if row[0].lower() == name.lower()), None)
-    if info != None:
-        print("\n" + info[0] + ":")
-        print("Type 1: " + info[1])
-        print("Type 2: " + info[2])
-        print("HP : " + str(info[4]))
-        print("Att: " + str(info[5]))
-        print("Def: " + str(info[6]))
-        print("Spa: " + str(info[7]))
-        print("Spd: " + str(info[8]))
-        print("Spe: " + str(info[9]))
-    else:
-        print("\nPokemon not found, try again: ")
+def print_pokemon_stats(pokemon_data: list):
+    print(f"\n{pokemon_data[0]}:")
+    print(f"Type 1: {pokemon_data[1]}")
+    print(f"Type 2: {pokemon_data[2]}")
+    print(f"HP : {str(pokemon_data[4])}")
+    print(f"Att: {str(pokemon_data[5])}")
+    print(f"Def: {str(pokemon_data[6])}")
+    print(f"Spa: {str(pokemon_data[7])}")
+    print(f"Spd: {str(pokemon_data[8])}")
+    print(f"Spe: {str(pokemon_data[9])}")
+
+
+def print_tm_stats(tm_data: list):
+    print(f"\n{tm_data[0]}:")
+    print(f"Type: {tm_data[1]}")
+    print(f"Category: {tm_data[2]}")
+    print(f"Power: {str(tm_data[3])}")
+    print(f"Accuracy: {str(tm_data[4])}")
 
 
 def print_pokemons_in_battle(trainer: Trainer, pk_in_batlle_user: int, user_hp: int, opponent: Trainer, pk_in_batlle_opponent: int, opponent_hp: int):

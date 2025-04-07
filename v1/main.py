@@ -16,7 +16,6 @@ def main() -> int:
         
     if aux == 'help':
         help()
-        print("If you want to see this again, type 'help'.")
         print("Press 'Enter' to start the game.")
         input()
     elif aux == 'exit':

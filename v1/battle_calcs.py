@@ -13,7 +13,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Ghost" in target_types:
             mult *= 0
 
-    if type == "Fire":
+    elif type == "Fire":
         if "Grass" in target_types:
             mult *= 2
         if "Water" in target_types:
@@ -31,7 +31,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Ice" in target_types:
             mult *= 2
 
-    if type == "Water":
+    elif type == "Water":
         if "Fire" in target_types:
             mult *= 2
         if "Water" in target_types:
@@ -45,7 +45,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Dragon" in target_types:
             mult *= 0.5
 
-    if type == "Electric":
+    elif type == "Electric":
         if "Water" in target_types:
             mult *= 2
         if "Electric" in target_types:
@@ -59,7 +59,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Grass" in target_types:
             mult *= 0.5
 
-    if type == "Grass":
+    elif type == "Grass":
         if "Water" in target_types:
             mult *= 2
         if "Grass" in target_types:
@@ -81,7 +81,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Steel" in target_types:
             mult *= 0.5
 
-    if type == "Ice":
+    elif type == "Ice":
         if "Grass" in target_types:
             mult *= 2
         if "Ice" in target_types:
@@ -99,7 +99,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Water" in target_types:
             mult *= 0.5
 
-    if type == "Fighting":
+    elif type == "Fighting":
         if "Normal" in target_types:
             mult *= 2
         if "Rock" in target_types:
@@ -123,7 +123,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Poison" in target_types:
             mult *= 0.5
 
-    if type == "Poison":
+    elif type == "Poison":
         if "Grass" in target_types:
             mult *= 2
         if "Poison" in target_types:
@@ -139,7 +139,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Ground" in target_types:
             mult *= 0.5
 
-    if type == "Ground":
+    elif type == "Ground":
         if "Electric" in target_types:
             mult *= 2
         if "Rock" in target_types:
@@ -157,7 +157,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Fire" in target_types:
             mult *= 2
 
-    if type == "Flying":
+    elif type == "Flying":
         if "Grass" in target_types:
             mult *= 2
         if "Steel" in target_types:
@@ -171,7 +171,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Electric" in target_types:
             mult *= 0.5
 
-    if type == "Psychic":
+    elif type == "Psychic":
         if "Fighting" in target_types:
             mult *= 2
         if "Psychic" in target_types:
@@ -183,7 +183,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Dark" in target_types:
             mult *= 0
 
-    if type == "Bug":
+    elif type == "Bug":
         if "Grass" in target_types:
             mult *= 2
         if "Psychic" in target_types:
@@ -207,7 +207,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Steel" in target_types:
             mult *= 0.5
 
-    if type == "Rock":
+    elif type == "Rock":
         if "Fire" in target_types:
             mult *= 2
         if "Flying" in target_types:
@@ -225,7 +225,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Ice" in target_types:
             mult *= 2
 
-    if type == "Ghost":
+    elif type == "Ghost":
         if "Ghost" in target_types:
             mult *= 2
         if "Psychic" in target_types:
@@ -235,7 +235,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Dark" in target_types:
             mult *= 0.5
 
-    if type == "Dragon":
+    elif type == "Dragon":
         if "Dragon" in target_types:
             mult *= 2
         if "Steel" in target_types:
@@ -243,7 +243,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Fairy" in target_types:
             mult *= 0
 
-    if type == "Dark":
+    elif type == "Dark":
         if "Ghost" in target_types:
             mult *= 2
         if "Dark" in target_types:
@@ -255,7 +255,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Fighting" in target_types:
             mult *= 0.5
 
-    if type == "Steel":
+    elif type == "Steel":
         if "Steel" in target_types:
             mult *= 0.5
         if "Rock" in target_types:
@@ -271,7 +271,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
         if "Electric" in target_types:
             mult *= 0.5
 
-    if type == "Fairy":
+    elif type == "Fairy":
         if "Dragon" in target_types:
             mult *= 2
         if "Dark" in target_types:

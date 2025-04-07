@@ -7,12 +7,12 @@ def opponent_choose_action(bot_trainer: Trainer, bot_pk_in_battle: int, user_tra
         return "switch"
 
     #se todos os ataques do pokemon forem not very effective, switch
-    aux = False
     for i in range(1, 4):
-        if calc_effectiveness(bot_trainer[1][bot_pk_in_battle][i][1] < 1):
-            aux = True
-        else:
+        if calc_effectiveness(bot_trainer[1][bot_pk_in_battle][i][1], user_trainer[1][user_pk_in_battle]) >= 1:
             aux = False
+            break
+        else:
+            aux = True
 
     if aux:
         return "switch"
@@ -21,8 +21,12 @@ def opponent_choose_action(bot_trainer: Trainer, bot_pk_in_battle: int, user_tra
 
 
 def opponent_choose_attack(bot_trainer: Trainer, bot_pk_in_battle: int, user_trainer: Trainer, user_pk_in_battle: int) -> TM: #TODO:
-    bot_chosen_tm = bot_trainer[1][bot_pk_in_battle][1]
-    
+    aux = 0
+    for i in range(1, 4):
+        if calc_damage(bot_trainer[1][bot_pk_in_battle], user_trainer[1][user_pk_in_battle], bot_trainer[1][bot_pk_in_battle][i]) > aux:
+            bot_chosen_tm = bot_trainer[1][bot_pk_in_battle][i]
+            aux = calc_damage(bot_trainer[1][bot_pk_in_battle], user_trainer[1][user_pk_in_battle], bot_trainer[1][bot_pk_in_battle][i])
+
     return bot_chosen_tm
 
 
