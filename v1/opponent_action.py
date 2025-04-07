@@ -2,12 +2,23 @@ from data_types import *
 from battle_calcs import *
 
 def opponent_choose_action(bot_trainer: Trainer, bot_pk_in_battle: int, user_trainer: Trainer, user_pk_in_battle: int) -> str:
+    #if user hits for super effective
     if calc_effectiveness(user_trainer[1][user_pk_in_battle][0][1], bot_trainer[1][bot_pk_in_battle]) >= 2 or calc_effectiveness(user_trainer[1][user_pk_in_battle][0][2], bot_trainer[1][bot_pk_in_battle]) >= 2:
-        #switch
         return "switch"
-    else:
-        #attack
-        return "attack"
+
+    #se todos os ataques do pokemon forem not very effective, switch
+    aux = False
+    for i in range(1, 4):
+        if calc_effectiveness(bot_trainer[1][bot_pk_in_battle][i][1] < 1):
+            aux = True
+        else:
+            aux = False
+
+    if aux:
+        return "switch"
+
+    return "attack"
+
 
 def opponent_choose_attack(bot_trainer: Trainer, bot_pk_in_battle: int, user_trainer: Trainer, user_pk_in_battle: int) -> TM: #TODO:
     bot_chosen_tm = bot_trainer[1][bot_pk_in_battle][1]
