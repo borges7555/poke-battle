@@ -310,11 +310,11 @@ def calc_damage(attacker: TrainedPokemon, target: TrainedPokemon, TM: TM) -> int
         
     effectiveness = calc_effectiveness(TM[1], target)
     if 0 < effectiveness <= 0.5:
-        print("\nIt's not very effective.")
+        print("It's not very effective.")
     elif effectiveness >= 2:
-        print("\nIt's super effective.")
+        print("It's super effective.")
     elif effectiveness == 0:
-        print(f"\nIt's doesn't affect {target[0][0]}.") 
+        print(f"It's doesn't affect {target[0][0]}.") 
 
     damage = ((21*damage*(attack/defense))/50 + 2)*STAB*effectiveness
     

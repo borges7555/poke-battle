@@ -4,6 +4,8 @@ from returns import *
 def create_default_trainers(pokemon_data: list, tm_data: list) -> list[Trainer]:
     trainers = []
     Pikachu = return_pokemon_species("Pikachu", pokemon_data)
+    Pikachu[5] *= 2
+    Pikachu[7] *= 2
     Charizard = return_pokemon_species("Charizard", pokemon_data)
     Blastoise = return_pokemon_species("Blastoise", pokemon_data)
     Venusaur = return_pokemon_species("Venusaur", pokemon_data)

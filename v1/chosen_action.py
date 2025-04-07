@@ -2,8 +2,8 @@ import sys
 from data_types import *
 from battle_calcs import *
 
-def chose_attack(trainer: Trainer, pk_in_battle_user: int, opponent: Trainer, pk_in_battle_opponent: int) -> int:
-    print("\nChoose an attack:")
+def user_choose_attack(trainer: Trainer, pk_in_battle_user: int) -> TM:
+    print("\nChoose a move:")
     for i in range(4):
         print(f"{i + 1}. {trainer[1][pk_in_battle_user][i+2][0]}")
 
@@ -13,16 +13,20 @@ def chose_attack(trainer: Trainer, pk_in_battle_user: int, opponent: Trainer, pk
         attack = input()
     
     chosen_move = trainer[1][pk_in_battle_user][int(attack)+1]
+    return chosen_move
+
+
+def user_attacks(trainer: Trainer, pk_in_battle_user: int, chosen_move: TM, opponent: Trainer, pk_in_battle_opponent: int) -> int:
     print(f"\n{trainer[1][pk_in_battle_user][0][0]} used {chosen_move[0]}.")
     damage = calc_damage(trainer[1][pk_in_battle_user], opponent[1][pk_in_battle_opponent], chosen_move)
-    print(f"\nIt did {damage} damage.")
+    print(f"It did {damage} damage.")
     if opponent[1][pk_in_battle_opponent][1][0] - damage < 0:
         return 0
     
     return opponent[1][pk_in_battle_opponent][1][0] - damage
 
 
-def chose_switch(trainer: Trainer, pk_in_battle_user: int) -> int:
+def user_switch(trainer: Trainer, pk_in_battle_user: int) -> int:
     pokemon_hp = 0
     print("\nChoose a Pokémon to switch to:")
     while pokemon_hp == 0:
@@ -50,7 +54,7 @@ def chose_switch(trainer: Trainer, pk_in_battle_user: int) -> int:
     return id
     
 
-def chose_run(trainer: Trainer, opponent: Trainer):
+def user_run(trainer: Trainer, opponent: Trainer):
     print("\nYou ran away.")
     print(f"{trainer[0]} lost to {opponent[0]}.")
     sys.exit(1)

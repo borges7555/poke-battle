@@ -6,7 +6,7 @@ from create_defaul_trainers import *
 import sys
 
 def main() -> int:
-    print("Welcome to the Pokemon Battle!")
+    print("Welcome to Pokemon Battle!")
     print("Type 'help' for instructions, 'exit' to leave or press 'Enter' to start the game.")
     aux = input()
 
