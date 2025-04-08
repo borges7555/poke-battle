@@ -25,7 +25,7 @@ def game(trainer: Trainer, trainers: list):
     opponent = trainers[aux - 1]
     user_pokemon_down = 0
     opponent_pokemon_down = 0
-    kos_to_win = 1 #TODO: change to 6
+    kos_to_win = 2 #TODO: change to 6
 
     pk_in_batlle_user = 0
     pk_in_batlle_opponent = random.randint(0, 5)
