@@ -75,7 +75,7 @@ def game(trainer: Trainer, trainers: list):
             pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user)
             user_hp = trainer[1][pk_in_batlle_user][1][0]
             user_speed = trainer[1][pk_in_batlle_user][1][5]
-            print(f"{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
+            print(f"\n{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
             print_pokemons_in_battle(trainer, pk_in_batlle_user, user_hp, opponent, pk_in_batlle_opponent, opponent_hp)
             #opponent attacks
             user_hp = opponent_attacks(opponent, pk_in_batlle_opponent, opponent_chosen_tm, trainer, pk_in_batlle_user)
@@ -115,6 +115,7 @@ def game(trainer: Trainer, trainers: list):
 
         elif opponent_speed >= user_speed:    
             if opponent_action == "attack" and action == "1":
+                user_chosen_tm = user_choose_attack(trainer, pk_in_batlle_user)
                 #opponent attacks
                 opponent_chosen_tm = opponent_choose_attack(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
                 user_hp = opponent_attacks(opponent, pk_in_batlle_opponent, opponent_chosen_tm, trainer, pk_in_batlle_user)
@@ -130,7 +131,6 @@ def game(trainer: Trainer, trainers: list):
                         print(f"{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
                 else:
                     #user attacks if pokemon wasnt knocked out
-                    user_chosen_tm = user_choose_attack(trainer, pk_in_batlle_user)
                     opponent_hp = user_attacks(trainer, pk_in_batlle_user, user_chosen_tm, opponent, pk_in_batlle_opponent)
                     opponent[1][pk_in_batlle_opponent][1][0] = opponent_hp
                     #check if opponent pokemon is knocked out

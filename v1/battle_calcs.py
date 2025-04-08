@@ -287,7 +287,7 @@ def calc_effectiveness(type: str, target: TrainedPokemon) -> float:
 
     return mult
 
-def calc_damage(attacker: TrainedPokemon, target: TrainedPokemon, TM: TM) -> int:
+def calc_damage(attacker: TrainedPokemon, target: TrainedPokemon, TM: TM, show_prints: bool) -> int:
     damage = TM[3]
     STAB = 1
     if TM[3] in [attacker[0][1], attacker[0][2]]:
@@ -305,16 +305,20 @@ def calc_damage(attacker: TrainedPokemon, target: TrainedPokemon, TM: TM) -> int
     if TM[4] < 100:
         aux = random.randint(1, 100)
         if aux > TM[4]:
-            print(f"\n{target[0][0]} avoided the attack.")
+            if show_prints:
+                print(f"\n{target[0][0]} avoided the attack.")
             return 0
         
     effectiveness = calc_effectiveness(TM[1], target)
     if 0 < effectiveness <= 0.5:
-        print("It's not very effective.")
+        if show_prints:
+            print("It's not very effective.")
     elif effectiveness >= 2:
-        print("It's super effective.")
+        if show_prints:
+            print("It's super effective.")
     elif effectiveness == 0:
-        print(f"It's doesn't affect {target[0][0]}.") 
+        if show_prints:
+            print(f"It's doesn't affect {target[0][0]}.") 
 
     damage = ((21*damage*(attack/defense))/50 + 2)*STAB*effectiveness
     
