@@ -32,7 +32,7 @@ def user_attacks(trainer: Trainer, pk_in_battle_user: int, chosen_move: TM, oppo
     return opponent[1][pk_in_battle_opponent][1][0] - damage
 
 
-def user_switch(trainer: Trainer, pk_in_battle_user: int) -> int:
+def user_switch(trainer: Trainer, pk_in_battle_user: int, show_0: bool = True) -> int:
     pokemon_hp = 0
     print("\nChoose a Pokémon to switch to:")
     while pokemon_hp == 0:
@@ -46,11 +46,13 @@ def user_switch(trainer: Trainer, pk_in_battle_user: int) -> int:
             for move in pokemon[2:]:
                 print(f"    - {move[0]}")
 
-        print("\n0. Back")
+        if show_0:
+            print("\n0. Back")
+
         aux2 = input()
         
         while aux2 not in valid_ids:
-            if aux2 == "0":
+            if aux2 == "0" and show_0:
                 return None
             
             print("\nInvalid input. Try again.")

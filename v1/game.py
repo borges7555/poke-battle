@@ -102,7 +102,7 @@ def game(trainer: Trainer, trainers: list):
                 print(f"{trainer[0]}'s {trainer[1][pk_in_batlle_user][0][0]} fainted.")
                 user_pokemon_down += 1
                 if user_pokemon_down != kos_to_win:
-                    pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user)
+                    pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user, False)
                     user_hp = trainer[1][pk_in_batlle_user][1][0]
                     user_speed = trainer[1][pk_in_batlle_user][1][5]      
                     time.sleep(1)
@@ -153,7 +153,7 @@ def game(trainer: Trainer, trainers: list):
                     print(f"{trainer[0]}'s {trainer[1][pk_in_batlle_user][0][0]} fainted.")
                     user_pokemon_down += 1
                     if user_pokemon_down != kos_to_win:
-                        pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user)
+                        pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user, False)
                         user_hp = trainer[1][pk_in_batlle_user][1][0]
                         user_speed = trainer[1][pk_in_batlle_user][1][5]
                         time.sleep(1)
@@ -205,7 +205,7 @@ def game(trainer: Trainer, trainers: list):
                         print(f"{trainer[0]}'s {trainer[1][pk_in_batlle_user][0][0]} fainted.")
                         user_pokemon_down += 1
                         if user_pokemon_down != kos_to_win:
-                            pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user)
+                            pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user, False)
                             user_hp = trainer[1][pk_in_batlle_user][1][0]
                             user_speed = trainer[1][pk_in_batlle_user][1][5]
                             time.sleep(1)

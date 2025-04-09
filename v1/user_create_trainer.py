@@ -18,11 +18,23 @@ def user_create_trainer(pokemon_data: list, tm_data) -> Trainer:
         aux = input()
         #mostrar stats de pokemon se houver ' -s'
         if " -s" in aux:
-            pokemon = return_pokemon_species(aux, pokemon_data)
+            pokemon = return_pokemon_species(aux.split(" -")[0], pokemon_data)
             if pokemon is None:
                 print("\nPokemon not found.")
             else:
                 print_pokemon_stats(pokemon)
+
+            continue
+        elif " -l" in aux: #lista os pokemons que tem o excerto no nome
+            print("")
+            exists = False
+            for pk in pokemon_data:
+                if aux.split(" -")[0].lower() in pk[0].lower():
+                    exists = True
+                    print(pk[0])
+
+            if not exists:
+                print(f"Didn't find any pokemon with {aux.split(" -")[0].lower()} in its name.")
 
             continue
 
@@ -41,17 +53,33 @@ def user_create_trainer(pokemon_data: list, tm_data) -> Trainer:
             chosen_pokemon.append(current_stats)
             k = 0
             while k < 4:
-                print(f"\nChoose the TM number {k + 1} for {pokemon[0]}:")
+                print(f"Choose the TM number {k + 1} for {pokemon[0]}:")
                 aux = input()
                 #mostrar stats de tm se houver ' -s'
                 if " -s" in aux:
-                    tm = return_TM(aux, tm_data)
+                    tm = return_TM(aux.split(" -")[0], tm_data)
                     if tm is None:
-                        print("\nTM not found.")
+                        print("\nTM not found.\n")
                     else:
                         print_tm_stats(tm)
 
                     continue
+                elif " -l" in aux: #lista todos os ataques do tipo
+                    exists = False
+                    print("")
+                    for move in tm_data:
+                        if aux.split(" -")[0].lower() == move[1].lower():
+                            exists = True
+                            print(move[0])
+
+                    if not exists:
+                        print(f"{aux.split(" -")[0].lower()} type doesn't exist.\n")
+                    else:
+                        print("")
+
+                    continue
+
+                print("")
 
                 tm = return_TM(aux, tm_data)
                 if tm is None:

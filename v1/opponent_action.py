@@ -84,7 +84,7 @@ def opponent_switch(bot_trainer: Trainer, bot_pk_in_battle: int, user_trainer: T
                                 #print("#Debug: pokemon que tem ataque 4x efetivo")
                                 return id
     
-    #se tiver pokemon que resista ao pokemon do user ou é neutro
+    #se tiver pokemon que resista ao pokemon do user
     for id in range(0, 5):
         if id != bot_pk_in_battle:
             if (calc_effectiveness(user_trainer[1][user_pk_in_battle][0][1], bot_trainer[1][id]) < 1 and calc_effectiveness(user_trainer[1][user_pk_in_battle][0][2], bot_trainer[1][id]) <= 1) or (calc_effectiveness(user_trainer[1][user_pk_in_battle][0][1], bot_trainer[1][id]) <= 1 and calc_effectiveness(user_trainer[1][user_pk_in_battle][0][2], bot_trainer[1][id]) < 1):
@@ -99,8 +99,23 @@ def opponent_switch(bot_trainer: Trainer, bot_pk_in_battle: int, user_trainer: T
                     if bot_trainer[1][id][1][0] > 0:
                         #print("#Debug: pokemon que resiste")
                         return id
+
+    #se tiver pokemon que e neutro ao pokemon do user
+    for id in range(0, 5):
+        if id != bot_pk_in_battle:
+            if calc_effectiveness(user_trainer[1][user_pk_in_battle][0][1], bot_trainer[1][id]) <= 1 and calc_effectiveness(user_trainer[1][user_pk_in_battle][0][2], bot_trainer[1][id]) <= 1:
+                for k in range(2, 5):
+                    if calc_effectiveness(bot_trainer[1][id][k][1], user_trainer[1][user_pk_in_battle]) >= 2:
+                        aux = False
+                        break
+                    else:
+                        aux = True
+
+                if not aux:
+                    if bot_trainer[1][id][1][0] > 0:
+                        #print("#Debug: pokemon que e neutro e tem ataque 2x efetivo")
+                        return id
                     
-            elif calc_effectiveness(user_trainer[1][user_pk_in_battle][0][1], bot_trainer[1][id]) <= 1 and calc_effectiveness(user_trainer[1][user_pk_in_battle][0][2], bot_trainer[1][id]) <= 1:
                 for k in range(2, 5):
                     if calc_effectiveness(bot_trainer[1][id][k][1], user_trainer[1][user_pk_in_battle]) >= 1:
                         aux = False
@@ -113,6 +128,16 @@ def opponent_switch(bot_trainer: Trainer, bot_pk_in_battle: int, user_trainer: T
                         #print("#Debug: pokemon que e neutro")
                         return id
                         
+    #se tiver pokemon com ataque 2x efetivo
+    for id in range(0, 5):
+        if id != bot_pk_in_battle:
+            for k in range(2, 5):
+                if calc_effectiveness(bot_trainer[1][id][k][1], user_trainer[1][user_pk_in_battle]) >= 2:
+                    if calc_effectiveness(user_trainer[1][user_pk_in_battle][0][1], bot_trainer[1][id]) <= 1 and calc_effectiveness(user_trainer[1][user_pk_in_battle][0][2], bot_trainer[1][id]) <= 1:
+                        if bot_trainer[1][id][1][0] > 0:
+                            #print("#Debug: pokemon que tem ataque 2x efetivo")
+                            return id
+
     id = random.randint(0, 5)
     while id == bot_pk_in_battle or bot_trainer[1][id][1][0] == 0: 
         id = random.randint(0, 5)

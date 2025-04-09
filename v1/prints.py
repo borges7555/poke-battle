@@ -7,6 +7,9 @@ def help():
     print("The battle is a 1v1, and each trainer has 6 pokemons.")
     print("First, you have to create your team of 6 Pokemons.")
     print("While creating your team, you can type <pokemon_name> or <tm_name> plus '-s' to be shown its stats.")
+    print("While choosing a pokemon, if you don't know the exact the name of the pokemon you want but you know a part of it,")
+    print("you can type that part followed by ' -l' and you will be shown all the pokemons that have that part in their name.")
+    print("While choosing a TM, if you type a type followed by ' -l', you will be shown all TMs that are that type.")
     print("Then, you choose the trainers you want to fight against.")
     print("The order of which pokemon moves first is based on its speed stat.") 
     print("In each turn, you have to choose an attack for your pokemon to use.")
@@ -29,7 +32,7 @@ def print_tm_stats(tm_data: list):
     print(f"Type: {tm_data[1]}")
     print(f"Category: {tm_data[2]}")
     print(f"Power: {str(tm_data[3])}")
-    print(f"Accuracy: {str(tm_data[4])}")
+    print(f"Accuracy: {str(tm_data[4])}\n")
 
 
 def print_pokemons_in_battle(trainer: Trainer, pk_in_batlle_user: int, user_hp: int, opponent: Trainer, pk_in_batlle_opponent: int, opponent_hp: int):
