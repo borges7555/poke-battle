@@ -10,6 +10,9 @@ def user_create_trainer(pokemon_data: list, tm_data) -> Trainer:
     trainer.append(nickname)
     team = []
     used_pokemmons = []
+    legendaries = []
+    has_mega = False
+    has_legendary = False
     i = 0
     while i < 1: #TODO: change this to 6 to create a full team
         used_tms = []
@@ -43,7 +46,17 @@ def user_create_trainer(pokemon_data: list, tm_data) -> Trainer:
             print("\nPokemon not found.")
         elif pokemon in used_pokemmons:
             print("\nYou can't use the same pokemon more than once.")
+        elif has_mega and "Mega" in pokemon[0]:
+            print("\nYou can only have one mega in your team.")
+        elif has_legendary and pokemon[0] in legendaries:
+            print("\nYou can only have one legendary in your team.")
         else:
+            if "Mega" in pokemon[0]:
+                has_mega = True
+
+            if pokemon[0] in legendaries:
+                has_legendary = True
+
             if not show_picture(aux.lower()):
                 print(f"Couldn't show picture of {pokemon[0]}")
 

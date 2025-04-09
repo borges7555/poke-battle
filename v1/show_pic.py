@@ -12,9 +12,9 @@ def show_picture(name: str) -> bool:
     elif "mega" in name:
         if len(name.split(" ")) == 2:
             return show_pokemon_by_name(name.split(" ")[1], "mega")
-        elif 'x' in name:
+        elif ' x' in name:
             return show_pokemon_by_name(name.split(" ")[1], "mega-x")
-        elif 'y' in name:
+        elif ' y' in name:
             return show_pokemon_by_name(name.split(" ")[1], "mega-y")
     elif "primal" in name:
         return show_pokemon_by_name(name.split(" ")[1], "primal")
