@@ -4,22 +4,55 @@ from returns import *
 def create_default_trainers(pokemon_data: list, tm_data: list) -> list[Trainer]:
     trainers = []
     Pikachu = return_pokemon_species("Pikachu", pokemon_data)
-    Pikachu[5] *= 2
-    Pikachu[7] *= 2
     Charizard = return_pokemon_species("Charizard", pokemon_data)
     Blastoise = return_pokemon_species("Blastoise", pokemon_data)
     Venusaur = return_pokemon_species("Venusaur", pokemon_data)
     Snorlax = return_pokemon_species("Snorlax", pokemon_data)
     Mewtwo = return_pokemon_species("Mewtwo", pokemon_data)
     Red_Pikachu = create_TrainedPokemon(Pikachu, Pikachu[4:], return_TM("Thunderbolt", tm_data), return_TM("Surf", tm_data), return_TM("Play Rough", tm_data), return_TM("Brick Break", tm_data))
-    Red_Charizard = create_TrainedPokemon(Charizard, Charizard[4:], return_TM("Flamethrower", tm_data), return_TM("Air Slash", tm_data), return_TM("Dragon Pulse", tm_data), return_TM("Thunder Punch", tm_data))
+    Red_Charizard = create_TrainedPokemon(Charizard, Charizard[4:], return_TM("Flamethrower", tm_data), return_TM("Air Slash", tm_data), return_TM("Dragon Pulse", tm_data), return_TM("Scorching Sands", tm_data))
     Red_Blastoise = create_TrainedPokemon(Blastoise, Blastoise[4:], return_TM("Surf", tm_data), return_TM("Ice Beam", tm_data), return_TM("Flash Cannon", tm_data), return_TM("Dark Pulse", tm_data))
     Red_Venusaur = create_TrainedPokemon(Venusaur, Venusaur[4:], return_TM("Giga Drain", tm_data), return_TM("Sludge Bomb", tm_data), return_TM("Earthquake", tm_data), return_TM("Petal Blizzard", tm_data))
     Red_Snorlax = create_TrainedPokemon(Snorlax, Snorlax[4:], return_TM("Body Slam", tm_data), return_TM("Earthquake", tm_data), return_TM("Crunch", tm_data), return_TM("Body Press", tm_data))
     Red_Mewtwo = create_TrainedPokemon(Mewtwo, Mewtwo[4:], return_TM("Psychic", tm_data), return_TM("Shadow Ball", tm_data), return_TM("Aura Sphere", tm_data), return_TM("Ice Beam", tm_data))
 
+    Red_Pikachu[1][1] *= 2
+    Red_Pikachu[1][2] *= 2
+    Red_Pikachu[1][3] *= 2
+    Red_Pikachu[1][4] *= 2
     Red_Team = create_PokemonTeam(Red_Pikachu, Red_Charizard, Red_Blastoise, Red_Venusaur, Red_Snorlax, Red_Mewtwo)
     Red = create_Trainer("Red", Red_Team)
     trainers.append(Red)
+
+    Salamence = return_pokemon_species("Salamence", pokemon_data)
+    Gyarados = return_pokemon_species("Gyarados", pokemon_data)
+    Garchomp = return_pokemon_species("Garchomp", pokemon_data)
+    #Charizard
+    Dragonite = return_pokemon_species("Dragonite", pokemon_data)
+    Lugia = return_pokemon_species("Lugia", pokemon_data)
+    Lance_Salamence = create_TrainedPokemon(Salamence, Salamence[4:], return_TM("Outrage", tm_data), return_TM("Fly", tm_data), return_TM("Temper Flare", tm_data), return_TM("Brick Break", tm_data))
+    Lance_Gyarados = create_TrainedPokemon(Gyarados, Gyarados[4:], return_TM("Waterfall", tm_data), return_TM("Earthquake", tm_data), return_TM("Crunch", tm_data), return_TM("Ice Fang", tm_data))
+    Lance_Garchomp = create_TrainedPokemon(Garchomp, Garchomp[4:], return_TM("Outrage", tm_data), return_TM("Earthquake", tm_data), return_TM("Poison Jab", tm_data), return_TM("Crunch", tm_data))
+    Lance_Charizard = create_TrainedPokemon(Charizard, Charizard[4:], return_TM("Flamethrower", tm_data), return_TM("Air Slash", tm_data), return_TM("Dragon Pulse", tm_data), return_TM("Scorching Sands", tm_data))
+    Lance_Dragonite = create_TrainedPokemon(Dragonite, Dragonite[4:], return_TM("Outrage", tm_data), return_TM("Fly", tm_data), return_TM("Thunder Punch", tm_data), return_TM("Brick Break", tm_data))
+    Lance_Lugia = create_TrainedPokemon(Lugia, Lugia[4:], return_TM("Future Sight", tm_data), return_TM("Brave Bird", tm_data), return_TM("Thunderbolt", tm_data), return_TM("Ice Beam", tm_data))
+
+    Lance_Team = create_PokemonTeam(Lance_Salamence, Lance_Gyarados, Lance_Garchomp, Lance_Charizard, Lance_Dragonite, Lance_Lugia)
+    Lance = create_Trainer("Lance", Lance_Team)
+    trainers.append(Lance)
+
+    #Steven
+
+    #Cynthia
+
+    #N
+
+    #Diantha
+
+    #Kukui
+
+    #Leon
+
+    #Geeta
 
     return trainers

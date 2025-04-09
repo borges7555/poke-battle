@@ -7,8 +7,12 @@ def user_choose_attack(trainer: Trainer, pk_in_battle_user: int) -> TM:
     for i in range(4):
         print(f"{i + 1}. {trainer[1][pk_in_battle_user][i+2][0]}")
 
+    print("\n0. Back")
     attack = input()
     while attack not in ["1", "2", "3", "4"]:
+        if attack == "0":
+            return None
+        
         print("\nInvalid input. Try again.")
         attack = input()
     
@@ -40,9 +44,13 @@ def user_switch(trainer: Trainer, pk_in_battle_user: int) -> int:
             for move in pokemon[2:]:
                 print(f"    - {move[0]}")
 
+        print("\n0. Back")
         aux2 = input()
         
         while aux2 not in valid_ids:
+            if aux2 == "0":
+                return None
+            
             print("\nInvalid input. Try again.")
             aux2 = input()
 

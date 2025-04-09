@@ -54,25 +54,33 @@ def game(trainer: Trainer, trainers: list):
             user_run(trainer, opponent)
 
         elif opponent_action == "switch" and action == "2":
+            aux = pk_in_batlle_user
+            pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user)
+            if pk_in_batlle_user == None:
+                pk_in_batlle_user = aux
+                continue
             #opponent switches
             print(f"\n{opponent[0]} retrieved {opponent[1][pk_in_batlle_opponent][0][0]}.")
-            pk_in_batlle_opponent = opponent_switch(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
+            pk_in_batlle_opponent = opponent_switch(opponent, pk_in_batlle_opponent, trainer, aux)
             opponent_hp = opponent[1][pk_in_batlle_opponent][1][0]
             opponent_speed = opponent[1][pk_in_batlle_opponent][1][5]
             print(f"{opponent[0]} sent out {opponent[1][pk_in_batlle_opponent][0][0]}.")
             #user switches
-            print(f"\n{trainer[0]} retrieved {trainer[1][pk_in_batlle_user][0][0]}.")
-            pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user)
+            print(f"\n{trainer[0]} retrieved {trainer[1][aux][0][0]}.")
             user_hp = trainer[1][pk_in_batlle_user][1][0]
             user_speed = trainer[1][pk_in_batlle_user][1][5]
             print(f"{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
 
         elif opponent_action == "attack" and action == "2":
-            #opponent chooses move
-            opponent_chosen_tm = opponent_choose_attack(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
-            #user switches
-            print(f"\n{trainer[0]} retrieved {trainer[1][pk_in_batlle_user][0][0]}.")
+            aux = pk_in_batlle_user
             pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user)
+            if pk_in_batlle_user == None:
+                pk_in_batlle_user = aux
+                continue
+            #opponent chooses move
+            opponent_chosen_tm = opponent_choose_attack(opponent, pk_in_batlle_opponent, trainer, aux)
+            #user switches
+            print(f"\n{trainer[0]} retrieved {trainer[1][aux][0][0]}.")
             user_hp = trainer[1][pk_in_batlle_user][1][0]
             user_speed = trainer[1][pk_in_batlle_user][1][5]
             print(f"\n{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
@@ -93,6 +101,8 @@ def game(trainer: Trainer, trainers: list):
         elif opponent_action == "switch" and action == "1":
             #user chooses move
             user_chosen_tm = user_choose_attack(trainer, pk_in_batlle_user)
+            if user_chosen_tm == None:
+                continue
             #opponent switches
             print(f"\n{opponent[0]} retrieved {opponent[1][pk_in_batlle_opponent][0][0]}.")
             pk_in_batlle_opponent = opponent_switch(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
@@ -116,6 +126,8 @@ def game(trainer: Trainer, trainers: list):
         elif opponent_speed >= user_speed:    
             if opponent_action == "attack" and action == "1":
                 user_chosen_tm = user_choose_attack(trainer, pk_in_batlle_user)
+                if user_chosen_tm == None:
+                    continue
                 #opponent attacks
                 opponent_chosen_tm = opponent_choose_attack(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
                 user_hp = opponent_attacks(opponent, pk_in_batlle_opponent, opponent_chosen_tm, trainer, pk_in_batlle_user)
@@ -146,6 +158,8 @@ def game(trainer: Trainer, trainers: list):
             if opponent_action == "attack" and action == "1":
                 #user attacks
                 user_chosen_tm = user_choose_attack(trainer, pk_in_batlle_user)
+                if user_chosen_tm == None:
+                    continue
                 opponent_hp = user_attacks(trainer, pk_in_batlle_user, user_chosen_tm, opponent, pk_in_batlle_opponent)
                 opponent[1][pk_in_batlle_opponent][1][0] = opponent_hp
                 #check if opponent pokemon is knocked out
