@@ -11,7 +11,7 @@ def user_create_trainer(pokemon_data: list, tm_data) -> Trainer:
     team = []
     used_pokemmons = []
     i = 0
-    while i < 2: #TODO: change this to 6 to create a full team
+    while i < 1: #TODO: change this to 6 to create a full team
         used_tms = []
         chosen_pokemon = []
         print(f"\nChoose pokemon number {i + 1}:")

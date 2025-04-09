@@ -1,4 +1,5 @@
 import sys
+import time
 from data_types import *
 from battle_calcs import *
 
@@ -23,6 +24,7 @@ def user_choose_attack(trainer: Trainer, pk_in_battle_user: int) -> TM:
 def user_attacks(trainer: Trainer, pk_in_battle_user: int, chosen_move: TM, opponent: Trainer, pk_in_battle_opponent: int) -> int:
     print(f"\n{trainer[1][pk_in_battle_user][0][0]} used {chosen_move[0]}.")
     damage = calc_damage(trainer[1][pk_in_battle_user], opponent[1][pk_in_battle_opponent], chosen_move, True)
+    time.sleep(1)
     print(f"It did {damage} damage.")
     if opponent[1][pk_in_battle_opponent][1][0] - damage < 0:
         return 0
