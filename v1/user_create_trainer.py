@@ -4,8 +4,8 @@ from returns import *
 from prints import *
 import sys
 
-def user_create_trainer(pokemon_data: list, tm_data) -> Trainer:
-    print("Choose your nickname:")
+def user_create_trainer(pokemon_data: list, tm_data, num_pk: int) -> Trainer:
+    print("\nChoose your nickname:")
     nickname = input()
     if nickname == "exit":
         sys.exit(1)
@@ -22,7 +22,7 @@ def user_create_trainer(pokemon_data: list, tm_data) -> Trainer:
     has_mega = False
     has_legendary = False
     i = 0
-    while i < 1: #TODO: change this to 6 to create a full team
+    while i < num_pk:
         used_tms = []
         chosen_pokemon = []
         print(f"\nChoose pokemon number {i + 1}:")

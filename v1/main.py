@@ -26,8 +26,16 @@ def main() -> int:
     tm_data = create_tm_map_from_csv()
     trainers = create_default_trainers(pokemon_data, tm_data)
     while play_again:
-        trainer = user_create_trainer(pokemon_data, tm_data)
-        game(trainer, trainers)
+        print("Choose how many pokemons both trainers will use (1-6):")
+        num_pk = input()
+        while num_pk not in ['1', '2', '3', '4', '5', '6']:
+            print("\nInvalid input. Try again.")
+            num_pk = input()
+
+        num_pk = int(num_pk)
+        trainer = user_create_trainer(pokemon_data, tm_data, num_pk)
+        print("")
+        game(trainer, trainers, num_pk)
         print("Do you want to play again? (y/n)")
         aux = input()
         while aux != 'y' and aux != 'n':

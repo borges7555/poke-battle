@@ -8,8 +8,8 @@ from chosen_action import *
 from opponent_action import *
 import time
 
-def game(trainer: Trainer, trainers: list):
-    print("\nChoose a trainer to fight against:")
+def game(trainer: Trainer, trainers: list, kos_to_win: int):
+    print("Choose a trainer to fight against:")
     for i in range(len(trainers)):
         print(f"{i + 1}. {trainers[i][0]}")
 
@@ -24,12 +24,12 @@ def game(trainer: Trainer, trainers: list):
         aux = int(input())
 
     opponent = trainers[aux - 1]
+    opponent[1] = opponent[1][6-kos_to_win:]
     user_pokemon_down = 0
     opponent_pokemon_down = 0
-    kos_to_win = 4 #TODO: change to 6
 
     pk_in_batlle_user = 0
-    pk_in_batlle_opponent = random.randint(0, 5)
+    pk_in_batlle_opponent = random.randint(0, kos_to_win - 1)
 
     opponent_speed = opponent[1][pk_in_batlle_opponent][1][5]
     user_speed = trainer[1][pk_in_batlle_user][1][5]

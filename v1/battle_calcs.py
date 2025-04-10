@@ -369,3 +369,19 @@ def bot_calc_damage(attacker: TrainedPokemon, target: TrainedPokemon, TM: TM, sh
     damage = ((20*damage*(attack/defense))/50 + 2)*STAB*effectiveness
     
     return int(damage)
+
+def share_weaknesses(pokemon1: TrainedPokemon, pokemon2: TrainedPokemon) -> bool:
+    all_types = ["Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"]
+    weaknesses1 = []
+    weaknesses2 = []
+    for pk_type in all_types:
+        if calc_effectiveness(pk_type, pokemon1) > 1:
+            weaknesses1.append(pk_type)
+        if calc_effectiveness(pk_type, pokemon2) > 1:
+            weaknesses2.append(pk_type)
+
+    for weakness in weaknesses1:
+        if weakness in weaknesses2:
+            return True
+        
+    return False
