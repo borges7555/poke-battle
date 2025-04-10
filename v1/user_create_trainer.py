@@ -2,10 +2,14 @@ from create_trainers import *
 from data_types import *
 from returns import *
 from prints import *
+import sys
 
 def user_create_trainer(pokemon_data: list, tm_data) -> Trainer:
     print("Choose your nickname:")
     nickname = input()
+    if nickname == "exit":
+        sys.exit(1)
+
     trainer = []
     trainer.append(nickname)
     team = []
@@ -23,6 +27,9 @@ def user_create_trainer(pokemon_data: list, tm_data) -> Trainer:
         chosen_pokemon = []
         print(f"\nChoose pokemon number {i + 1}:")
         aux = input()
+        if aux == "exit":
+            sys.exit(1)
+
         #mostrar stats de pokemon se houver ' -s'
         if " -s" in aux:
             pokemon = return_pokemon_species(aux.split(" -")[0], pokemon_data)
@@ -79,6 +86,9 @@ def user_create_trainer(pokemon_data: list, tm_data) -> Trainer:
         while k < 4:
             print(f"Choose the TM number {k + 1} for {pokemon[0]}:")
             aux = input()
+            if aux == "exit":
+                sys.exit(1)
+                
             #mostrar stats de tm se houver ' -s'
             if " -s" in aux:
                 tm = return_TM(aux.split(" -")[0], tm_data)

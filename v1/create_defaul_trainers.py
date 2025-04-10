@@ -18,9 +18,9 @@ def create_default_trainers(pokemon_data: list, tm_data: list) -> list[Trainer]:
     Red_Mewtwo = create_TrainedPokemon(Mewtwo, Mewtwo[4:], return_TM("Psychic", tm_data), return_TM("Shadow Ball", tm_data), return_TM("Aura Sphere", tm_data), return_TM("Ice Beam", tm_data))
 
     Red_Pikachu[1][1] *= 2
-    Red_Pikachu[1][2] *= 2
+    Red_Pikachu[1][2] *= 1.5
     Red_Pikachu[1][3] *= 2
-    Red_Pikachu[1][4] *= 2
+    Red_Pikachu[1][4] *= 1.5
     Red_Team = create_PokemonTeam(Red_Pikachu, Red_MegaCharizardY, Red_Blastoise, Red_Venusaur, Red_Snorlax, Red_Mewtwo)
     Red = create_Trainer("Red", Red_Team)
     trainers.append(Red)
@@ -62,9 +62,38 @@ def create_default_trainers(pokemon_data: list, tm_data: list) -> list[Trainer]:
     trainers.append(Steven)
 
     #Cynthia
+    Spiritomb = return_pokemon_species("Spiritomb", pokemon_data)
+    Magmortar = return_pokemon_species("Magmortar", pokemon_data)
+    Milotic = return_pokemon_species("Milotic", pokemon_data)
+    Lucario = return_pokemon_species("Lucario", pokemon_data)
+    MegaGarchomp = return_pokemon_species("Mega Garchomp", pokemon_data)
+    GiratinaOrigin = return_pokemon_species("Giratina Origin", pokemon_data)
+    Cynthia_Spiritomb = create_TrainedPokemon(Spiritomb, Spiritomb[4:], return_TM("Poltergeist", tm_data), return_TM("Foul Play", tm_data), return_TM("Psychic", tm_data), return_TM("Burning Jealousy", tm_data))
+    Cynthia_Magmortar = create_TrainedPokemon(Magmortar, Magmortar[4:], return_TM("Flamethrower", tm_data), return_TM("Thunderbolt", tm_data), return_TM("Scorching Sands", tm_data), return_TM("Solar Beam", tm_data))
+    Cynthia_Milotic = create_TrainedPokemon(Milotic, Milotic[4:], return_TM("Surf", tm_data), return_TM("Ice Beam", tm_data), return_TM("Alluring Voice", tm_data), return_TM("Dragon Pulse", tm_data))
+    Cynthia_Lucario = create_TrainedPokemon(Lucario, Lucario[4:], return_TM("Close Combat", tm_data), return_TM("Flash Cannon", tm_data), return_TM("Thunder Punch", tm_data), return_TM("Ice Punch", tm_data))
+    Cynthia_MegaGarchomp = create_TrainedPokemon(MegaGarchomp, MegaGarchomp[4:], return_TM("Outrage", tm_data), return_TM("Earthquake", tm_data), return_TM("Poison Jab", tm_data), return_TM("Crunch", tm_data))
+    Cynthia_GiratinaOrigin = create_TrainedPokemon(GiratinaOrigin, GiratinaOrigin[4:], return_TM("Poltergeist", tm_data), return_TM("Draco Meteor", tm_data), return_TM("Thunderbolt", tm_data), return_TM("Energy Ball", tm_data))
 
+    Cynthia_Team = create_PokemonTeam(Cynthia_Spiritomb, Cynthia_Magmortar, Cynthia_Milotic, Cynthia_Lucario, Cynthia_MegaGarchomp, Cynthia_GiratinaOrigin)
+    Cynthia = create_Trainer("Cynthia", Cynthia_Team)
+    trainers.append(Cynthia)
     #N
-
+    Darmanitan = return_pokemon_species("Darmanitan", pokemon_data)
+    #Archeops
+    Carracosta = return_pokemon_species("Carracosta", pokemon_data)
+    KlinKlang = return_pokemon_species("Klinklang", pokemon_data)
+    Zoroark = return_pokemon_species("Zoroark", pokemon_data)
+    KyuremWhite = return_pokemon_species("Kyurem White", pokemon_data)
+    N_Darmanitan = create_TrainedPokemon(Darmanitan, Darmanitan[4:], return_TM("Flare Blitz", tm_data), return_TM("Earthquake", tm_data), return_TM("Rock Slide", tm_data), return_TM("Thunder Punch", tm_data))
+    N_Archeops = create_TrainedPokemon(Archeops, Archeops[4:], return_TM("Rock Slide", tm_data), return_TM("Fly", tm_data), return_TM("Earthquake", tm_data), return_TM("Crunch", tm_data))
+    N_Carracosta = create_TrainedPokemon(Carracosta, Carracosta[4:], return_TM("Waterfall", tm_data), return_TM("Rock Slide", tm_data), return_TM("Iron Head", tm_data), return_TM("Earthquake", tm_data))
+    N_KlinKlang = create_TrainedPokemon(KlinKlang, KlinKlang[4:], return_TM("Flash Cannon", tm_data), return_TM("Wild Charge", tm_data), return_TM("Facade", tm_data), return_TM("Power Gem", tm_data))
+    N_Zoroark = create_TrainedPokemon(Zoroark, Zoroark[4:], return_TM("Dark Pulse", tm_data), return_TM("Flamethrower", tm_data), return_TM("Psychic", tm_data), return_TM("Focus Blast", tm_data))
+    N_KyuremWhite = create_TrainedPokemon(KyuremWhite, KyuremWhite[4:], return_TM("Ice Beam", tm_data), return_TM("Draco Meteor", tm_data), return_TM("Flash Cannon", tm_data), return_TM("Earth Power", tm_data))
+    N_Team = create_PokemonTeam(N_Darmanitan, N_Archeops, N_Carracosta, N_KlinKlang, N_Zoroark, N_KyuremWhite)
+    N = create_Trainer("N", N_Team)
+    trainers.append(N)
     #Diantha
 
     #Kukui
@@ -73,4 +102,23 @@ def create_default_trainers(pokemon_data: list, tm_data: list) -> list[Trainer]:
 
     #Geeta
 
+    #Borges
+
+    #Isaac
+    Jolteon = return_pokemon_species("Jolteon", pokemon_data)
+    Mamoswine = return_pokemon_species("Mamoswine", pokemon_data)
+    AshGreninja = return_pokemon_species("Ash Greninja", pokemon_data)
+    #Lucario
+    MegaCharizardX = return_pokemon_species("Mega Charizard X", pokemon_data)
+    Yveltal = return_pokemon_species("Yveltal", pokemon_data)
+    Isaac_Jolteon = create_TrainedPokemon(Jolteon, Jolteon[4:], return_TM("Thunderbolt", tm_data), return_TM("Alluring Voice", tm_data), return_TM("Shadow Ball", tm_data), return_TM("Hyper Voice", tm_data))
+    Isaac_Mamoswine = create_TrainedPokemon(Mamoswine, Mamoswine[4:], return_TM("Body Press", tm_data), return_TM("Earthquake", tm_data), return_TM("Icicle Spear", tm_data), return_TM("Rock Slide", tm_data))
+    Isaac_AshGreninja = create_TrainedPokemon(AshGreninja, AshGreninja[4:], return_TM("Surf", tm_data), return_TM("Ice Beam", tm_data), return_TM("Dark Pulse", tm_data), return_TM("Sludge Wave", tm_data))
+    Isaac_Lucario = create_TrainedPokemon(Lucario, Lucario[4:], return_TM("Close Combat", tm_data), return_TM("Flash Cannon", tm_data), return_TM("Thunder Punch", tm_data), return_TM("Ice Punch", tm_data))
+    Isaac_MegaCharizardX = create_TrainedPokemon(MegaCharizardX, MegaCharizardX[4:], return_TM("Flare Blitz", tm_data), return_TM("Outrage", tm_data), return_TM("Earthquake", tm_data), return_TM("Solar Beam", tm_data))
+    Isaac_Yveltal = create_TrainedPokemon(Yveltal, Yveltal[4:], return_TM("Foul Play", tm_data), return_TM("Fly", tm_data), return_TM("Psychic", tm_data), return_TM("Heat Wave", tm_data))
+
+    Isaac_Team = create_PokemonTeam(Isaac_Jolteon, Isaac_Mamoswine, Isaac_AshGreninja, Isaac_Lucario, Isaac_MegaCharizardX, Isaac_Yveltal)
+    Isaac = create_Trainer("Isaac", Isaac_Team)
+    trainers.append(Isaac)
     return trainers
