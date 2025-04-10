@@ -34,7 +34,6 @@ def main() -> int:
 
         num_pk = int(num_pk)
         trainer = user_create_trainer(pokemon_data, tm_data, num_pk)
-        print("")
         game(trainer, trainers, num_pk)
         print("Do you want to play again? (y/n)")
         aux = input()

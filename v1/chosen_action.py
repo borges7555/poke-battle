@@ -34,7 +34,7 @@ def user_attacks(trainer: Trainer, pk_in_battle_user: int, chosen_move: TM, oppo
 
 def user_switch(trainer: Trainer, pk_in_battle_user: int, show_0: bool = True) -> int:
     pokemon_hp = 0
-    print("\nChoose a Pokémon to switch to:")
+    print("\nChoose a Pokemon to switch to:")
     while pokemon_hp == 0:
         valid_ids = []
         i = 0
@@ -43,6 +43,7 @@ def user_switch(trainer: Trainer, pk_in_battle_user: int, show_0: bool = True) -
             i += 1
             valid_ids.append(str(i))
             print(f"{str(i)}. {pokemon[0][0]}")
+            print(f"HP: {pokemon[1][0]}/{pokemon[0][4]}")
             for move in pokemon[2:]:
                 print(f"    - {move[0]}")
 
@@ -61,7 +62,8 @@ def user_switch(trainer: Trainer, pk_in_battle_user: int, show_0: bool = True) -
         id = int(aux2)-1 if int(aux2)-1 < pk_in_battle_user else int(aux2)
         pokemon_hp = trainer[1][id][1][0]
         if pokemon_hp == 0:
-            print("\nThis Pokémon is fainted. Choose another one.")
+            print(f"\n{trainer[1][id][0][0]} is fainted. Choose another one.")
+            time.sleep(1)
 
     return id
     

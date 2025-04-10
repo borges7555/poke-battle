@@ -9,7 +9,7 @@ from opponent_action import *
 import time
 
 def game(trainer: Trainer, trainers: list, kos_to_win: int):
-    print("Choose a trainer to fight against:")
+    print("\nChoose your opponent:")
     for i in range(len(trainers)):
         print(f"{i + 1}. {trainers[i][0]}")
 
@@ -44,7 +44,7 @@ def game(trainer: Trainer, trainers: list, kos_to_win: int):
         print_pokemons_in_battle(trainer, pk_in_batlle_user, user_hp, opponent, pk_in_batlle_opponent, opponent_hp)
         print("\nWhat will you do?")
         print("1. Attack")
-        print("2. Switch Pokémon")
+        print("2. Switch Pokemon")
         print("3. Run")
         action = input()
         while action not in ["1", "2", "3"]:
@@ -105,8 +105,7 @@ def game(trainer: Trainer, trainers: list, kos_to_win: int):
                     pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user, False)
                     user_hp = trainer[1][pk_in_batlle_user][1][0]
                     user_speed = trainer[1][pk_in_batlle_user][1][5]      
-                    time.sleep(1)
-                    print(f"{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
+                    print(f"\n{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
 
         elif opponent_action == "switch" and action == "1":
             #user chooses move
@@ -156,8 +155,7 @@ def game(trainer: Trainer, trainers: list, kos_to_win: int):
                         pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user, False)
                         user_hp = trainer[1][pk_in_batlle_user][1][0]
                         user_speed = trainer[1][pk_in_batlle_user][1][5]
-                        time.sleep(1)
-                        print(f"{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
+                        print(f"\n{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
                 else:
                     #user attacks if pokemon wasnt knocked out
                     time.sleep(1)
@@ -208,8 +206,7 @@ def game(trainer: Trainer, trainers: list, kos_to_win: int):
                             pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user, False)
                             user_hp = trainer[1][pk_in_batlle_user][1][0]
                             user_speed = trainer[1][pk_in_batlle_user][1][5]
-                            time.sleep(1)
-                            print(f"{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
+                            print(f"\n{trainer[0]} sent out {trainer[1][pk_in_batlle_user][0][0]}.")
 
         time.sleep(1)
 

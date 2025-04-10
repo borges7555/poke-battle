@@ -22,10 +22,11 @@ def user_create_trainer(pokemon_data: list, tm_data, num_pk: int) -> Trainer:
     has_mega = False
     has_legendary = False
     i = 0
+    print("")
     while i < num_pk:
         used_tms = []
         chosen_pokemon = []
-        print(f"\nChoose pokemon number {i + 1}:")
+        print(f"Choose Pokemon number {i + 1}:")
         aux = input()
         if aux == "exit":
             sys.exit(1)
@@ -48,7 +49,7 @@ def user_create_trainer(pokemon_data: list, tm_data, num_pk: int) -> Trainer:
                     print(pk[0])
 
             if not exists:
-                print(f"Didn't find any pokemon with {aux.split(" -")[0].lower()} in its name.")
+                print(f"Didn't find any Pokemon with {aux.split(" -")[0].lower()} in its name.")
 
             continue
 
@@ -58,7 +59,7 @@ def user_create_trainer(pokemon_data: list, tm_data, num_pk: int) -> Trainer:
             continue
 
         if pokemon in used_pokemmons:
-            print("\nYou can't use the same pokemon more than once.")
+            print("\nYou can't use the same Pokemon more than once.")
             continue
 
         if has_mega and "Mega" in pokemon[0]:
@@ -119,10 +120,10 @@ def user_create_trainer(pokemon_data: list, tm_data, num_pk: int) -> Trainer:
             if tm is None:
                 print("TM not found.")
             elif tm in used_tms:
-                print("\nYou can't use the same TM more than once in the same pokemon.")
+                print("\nYou can't use the same TM more than once in the same Pokemon.")
             else:
                 if not is_tm_and_pokemon_compatible(tm, pokemon[0]):
-                    print("\nPlease choose a compatible TM.")
+                    print(f"\n{pokemon[0]} can't learn {tm[0]}. Please choose a TM that {pokemon[0]} can learn.")
                 else:
                     used_tms.append(tm)
                     chosen_pokemon.append(tm)

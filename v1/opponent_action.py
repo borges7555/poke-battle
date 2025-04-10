@@ -6,6 +6,15 @@ def opponent_choose_action(bot_trainer: Trainer, bot_pk_in_battle: int, user_tra
     if len(bot_trainer[1]) == 1:
         return "attack"
     
+    #if nuber of pokemons alive is 1, attack
+    num = 0
+    for i in range(0, len(bot_trainer[1])):
+        if bot_trainer[1][i][1][0] > 0:
+            num += 1
+
+    if num == 1:
+        return "attack"
+    
     #if user hits for super effective
     if calc_effectiveness(user_trainer[1][user_pk_in_battle][0][1], bot_trainer[1][bot_pk_in_battle]) >= 2 or calc_effectiveness(user_trainer[1][user_pk_in_battle][0][2], bot_trainer[1][bot_pk_in_battle]) >= 2:
         #if bot also hits for super effective
@@ -147,9 +156,9 @@ def opponent_switch(bot_trainer: Trainer, bot_pk_in_battle: int, user_trainer: T
                         if not share_weaknesses(bot_trainer[1][id], bot_trainer[1][bot_pk_in_battle]):
                             return id
 
-    id = random.randint(0, 6)
+    id = random.randint(0, len(bot_trainer[1]) - 1)
     while id == bot_pk_in_battle or bot_trainer[1][id][1][0] == 0: 
-        id = random.randint(0, 6)
+        id = random.randint(0, len(bot_trainer[1]) - 1)
 
     #print("#Debug: pokemon random")
     return id
