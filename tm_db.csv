@@ -159,3 +159,12 @@ Breaking Swipe,Dragon,Physical,60,100
 Alluring Voice,Fairy,Special,80,100
 Psychic Noise,Psychic,Special,75,100
 Upper Hand,Fighting,Physical,65,100
+Agility,Psychic,Status,0/0/0/0/0/2,1000
+Bulk Up,Fighting,Status,0/1/0/1/0/0,1000
+Swords Dance,Normal,Status,0/2/0/0/0/0,1000
+Dragon Dance,Dragon,Status,0/1/0/0/0/1,1000
+Iron Defense,Steel,Status,0/0/2/0/0/0,1000
+Amnesia,Psychic,Status,0/0/0/0/2/0,1000
+Calm Mind,Psychic,Status,0/0/0/1/1/0,1000
+Nasty Plot,Dark,Status,0/0/0/2/0/0,1000
+Curse,Ghost,Status,0/1/1/0/0/-1,1000

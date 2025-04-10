@@ -2,3 +2,4 @@ __pycache__/
 *.pyc  
 build/  
 dist/
+tm_db_with_all_status_moves.csv

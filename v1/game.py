@@ -61,8 +61,10 @@ def game(trainer: Trainer, trainers: list, kos_to_win: int):
             if pk_in_batlle_user == None:
                 pk_in_batlle_user = aux
                 continue
+
             #opponent switches
             time.sleep(1)
+            opponent[1][pk_in_batlle_opponent][1] = opponent[1][pk_in_batlle_opponent][0][4:]
             print(f"\n{opponent[0]} retrieved {opponent[1][pk_in_batlle_opponent][0][0]}.")
             pk_in_batlle_opponent = opponent_switch(opponent, pk_in_batlle_opponent, trainer, aux)
             opponent_hp = opponent[1][pk_in_batlle_opponent][1][0]
@@ -71,6 +73,7 @@ def game(trainer: Trainer, trainers: list, kos_to_win: int):
             print(f"{opponent[0]} sent out {opponent[1][pk_in_batlle_opponent][0][0]}.")
             #user switches
             time.sleep(1)
+            trainer[1][aux][1] = trainer[1][aux][0][4:]
             print(f"\n{trainer[0]} retrieved {trainer[1][aux][0][0]}.")
             user_hp = trainer[1][pk_in_batlle_user][1][0]
             user_speed = trainer[1][pk_in_batlle_user][1][5]
@@ -83,9 +86,11 @@ def game(trainer: Trainer, trainers: list, kos_to_win: int):
             if pk_in_batlle_user == None:
                 pk_in_batlle_user = aux
                 continue
+
             #opponent chooses move
             opponent_chosen_tm = opponent_choose_attack(opponent, pk_in_batlle_opponent, trainer, aux)
             #user switches
+            trainer[1][aux][1] = trainer[1][aux][0][4:]
             print(f"\n{trainer[0]} retrieved {trainer[1][aux][0][0]}.")
             user_hp = trainer[1][pk_in_batlle_user][1][0]
             user_speed = trainer[1][pk_in_batlle_user][1][5]
@@ -112,8 +117,10 @@ def game(trainer: Trainer, trainers: list, kos_to_win: int):
             user_chosen_tm = user_choose_attack(trainer, pk_in_batlle_user)
             if user_chosen_tm == None:
                 continue
+
             #opponent switches
             time.sleep(1)
+            opponent[1][pk_in_batlle_opponent][1] = opponent[1][pk_in_batlle_opponent][0][4:]
             print(f"\n{opponent[0]} retrieved {opponent[1][pk_in_batlle_opponent][0][0]}.")
             pk_in_batlle_opponent = opponent_switch(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
             opponent_hp = opponent[1][pk_in_batlle_opponent][1][0]
@@ -123,8 +130,11 @@ def game(trainer: Trainer, trainers: list, kos_to_win: int):
             time.sleep(1)
             print_pokemons_in_battle(trainer, pk_in_batlle_user, user_hp, opponent, pk_in_batlle_opponent, opponent_hp)
             #user attacks
-            opponent_hp = user_attacks(trainer, pk_in_batlle_user, user_chosen_tm, opponent, pk_in_batlle_opponent)
-            opponent[1][pk_in_batlle_opponent][1][0] = opponent_hp
+            if user_chosen_tm[2] == "Status":
+                trainer[1][pk_in_batlle_user][1] = user_status(trainer, pk_in_batlle_user, user_chosen_tm)
+            else:    
+                opponent_hp = user_attacks(trainer, pk_in_batlle_user, user_chosen_tm, opponent, pk_in_batlle_opponent)
+                opponent[1][pk_in_batlle_opponent][1][0] = opponent_hp
             #check if opponent pokemon is knocked out 
             if opponent_hp == 0:
                 time.sleep(1)
@@ -142,6 +152,7 @@ def game(trainer: Trainer, trainers: list, kos_to_win: int):
                 user_chosen_tm = user_choose_attack(trainer, pk_in_batlle_user)
                 if user_chosen_tm == None:
                     continue
+
                 #opponent attacks
                 opponent_chosen_tm = opponent_choose_attack(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
                 user_hp = opponent_attacks(opponent, pk_in_batlle_opponent, opponent_chosen_tm, trainer, pk_in_batlle_user)
@@ -159,8 +170,11 @@ def game(trainer: Trainer, trainers: list, kos_to_win: int):
                 else:
                     #user attacks if pokemon wasnt knocked out
                     time.sleep(1)
-                    opponent_hp = user_attacks(trainer, pk_in_batlle_user, user_chosen_tm, opponent, pk_in_batlle_opponent)
-                    opponent[1][pk_in_batlle_opponent][1][0] = opponent_hp
+                    if user_chosen_tm[2] == "Status":
+                        trainer[1][pk_in_batlle_user][1] = user_status(trainer, pk_in_batlle_user, user_chosen_tm)
+                    else:    
+                        opponent_hp = user_attacks(trainer, pk_in_batlle_user, user_chosen_tm, opponent, pk_in_batlle_opponent)
+                        opponent[1][pk_in_batlle_opponent][1][0] = opponent_hp
                     #check if opponent pokemon is knocked out
                     if opponent_hp == 0:
                         time.sleep(1)
@@ -178,8 +192,12 @@ def game(trainer: Trainer, trainers: list, kos_to_win: int):
                 user_chosen_tm = user_choose_attack(trainer, pk_in_batlle_user)
                 if user_chosen_tm == None:
                     continue
-                opponent_hp = user_attacks(trainer, pk_in_batlle_user, user_chosen_tm, opponent, pk_in_batlle_opponent)
-                opponent[1][pk_in_batlle_opponent][1][0] = opponent_hp
+
+                if user_chosen_tm[2] == "Status":
+                    trainer[1][pk_in_batlle_user][1] = user_status(trainer, pk_in_batlle_user, user_chosen_tm)
+                else:    
+                    opponent_hp = user_attacks(trainer, pk_in_batlle_user, user_chosen_tm, opponent, pk_in_batlle_opponent)
+                    opponent[1][pk_in_batlle_opponent][1][0] = opponent_hp
                 #check if opponent pokemon is knocked out
                 if opponent_hp == 0:
                     time.sleep(1)

@@ -31,6 +31,30 @@ def user_attacks(trainer: Trainer, pk_in_battle_user: int, chosen_move: TM, oppo
     
     return opponent[1][pk_in_battle_opponent][1][0] - damage
 
+def user_status(trainer: Trainer, pk_in_battle_user: int, chosen_move: TM) -> list:
+    print(f"\n{trainer[1][pk_in_battle_user][0][0]} used {chosen_move[0]}.")
+    stats_names = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]
+    pokemon_stats = trainer[1][pk_in_battle_user][1]
+    changes = chosen_move[3].split("/")
+    for i in range(len(changes)):
+        if changes[i] == "1":
+            time.sleep(1)
+            print(f"{trainer[1][pk_in_battle_user][0][0]}'s {stats_names[i]} increased by 1 stage.")
+            pokemon_stats[i] = int(pokemon_stats[i] * 1.5)
+        elif changes[i] == "2":
+            time.sleep(1)
+            print(f"{trainer[1][pk_in_battle_user][0][0]}'s {stats_names[i]} increased by 2 stages.")
+            pokemon_stats[i] = int(pokemon_stats[i] * 2)
+        elif changes[i] == "-1":
+            time.sleep(1)
+            print(f"{trainer[1][pk_in_battle_user][0][0]}'s {stats_names[i]} decreased by 1 stage.")
+            pokemon_stats[i] = int(pokemon_stats[i] * 0.5)
+        elif changes[i] == "-2":
+            time.sleep(1)
+            print(f"{trainer[1][pk_in_battle_user][0][0]}'s {stats_names[i]} decreased by 2 stages.")
+            pokemon_stats[i] = int(pokemon_stats[i] * 0.25)
+
+    return pokemon_stats
 
 def user_switch(trainer: Trainer, pk_in_battle_user: int, show_0: bool = True) -> int:
     pokemon_hp = 0

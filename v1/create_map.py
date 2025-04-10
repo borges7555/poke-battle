@@ -33,7 +33,9 @@ def create_tm_map_from_csv() -> list:
         csv_reader = csv.reader(file)
         data_map = []
         for row in csv_reader:
-            row[3] = int(row[3])
+            if row[2] in ["Physical", "Special"]:
+                row[3] = int(row[3])
+                
             row[4] = int(row[4])
             data_map.append(row)
     return data_map
