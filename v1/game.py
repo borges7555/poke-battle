@@ -26,7 +26,7 @@ def game(trainer: Trainer, trainers: list):
     opponent = trainers[aux - 1]
     user_pokemon_down = 0
     opponent_pokemon_down = 0
-    kos_to_win = 2 #TODO: change to 6
+    kos_to_win = 4 #TODO: change to 6
 
     pk_in_batlle_user = 0
     pk_in_batlle_opponent = random.randint(0, 5)
@@ -99,7 +99,7 @@ def game(trainer: Trainer, trainers: list):
             #check if user pokemon is knocked out
             if user_hp == 0:
                 time.sleep(1)
-                print(f"{trainer[0]}'s {trainer[1][pk_in_batlle_user][0][0]} fainted.")
+                print(f"\n{trainer[0]}'s {trainer[1][pk_in_batlle_user][0][0]} fainted.")
                 user_pokemon_down += 1
                 if user_pokemon_down != kos_to_win:
                     pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user, False)
@@ -129,7 +129,7 @@ def game(trainer: Trainer, trainers: list):
             #check if opponent pokemon is knocked out 
             if opponent_hp == 0:
                 time.sleep(1)
-                print(f"{opponent[0]}'s {opponent[1][pk_in_batlle_opponent][0][0]} fainted.")
+                print(f"\n{opponent[0]}'s {opponent[1][pk_in_batlle_opponent][0][0]} fainted.")
                 opponent_pokemon_down += 1
                 if opponent_pokemon_down != kos_to_win:
                     pk_in_batlle_opponent = opponent_switch(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
@@ -150,7 +150,7 @@ def game(trainer: Trainer, trainers: list):
                 #check if user pokemon is knocked out
                 if user_hp == 0:
                     time.sleep(1)
-                    print(f"{trainer[0]}'s {trainer[1][pk_in_batlle_user][0][0]} fainted.")
+                    print(f"\n{trainer[0]}'s {trainer[1][pk_in_batlle_user][0][0]} fainted.")
                     user_pokemon_down += 1
                     if user_pokemon_down != kos_to_win:
                         pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user, False)
@@ -166,7 +166,7 @@ def game(trainer: Trainer, trainers: list):
                     #check if opponent pokemon is knocked out
                     if opponent_hp == 0:
                         time.sleep(1)
-                        print(f"{opponent[0]}'s {opponent[1][pk_in_batlle_opponent][0][0]} fainted.")
+                        print(f"\n{opponent[0]}'s {opponent[1][pk_in_batlle_opponent][0][0]} fainted.")
                         opponent_pokemon_down += 1
                         if opponent_pokemon_down != kos_to_win:
                             pk_in_batlle_opponent = opponent_switch(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
@@ -185,7 +185,7 @@ def game(trainer: Trainer, trainers: list):
                 #check if opponent pokemon is knocked out
                 if opponent_hp == 0:
                     time.sleep(1)
-                    print(f"{opponent[0]}'s {opponent[1][pk_in_batlle_opponent][0][0]} fainted.")
+                    print(f"\n{opponent[0]}'s {opponent[1][pk_in_batlle_opponent][0][0]} fainted.")
                     opponent_pokemon_down += 1
                     if opponent_pokemon_down != kos_to_win:
                         pk_in_batlle_opponent = opponent_switch(opponent, pk_in_batlle_opponent, trainer, pk_in_batlle_user)
@@ -202,7 +202,7 @@ def game(trainer: Trainer, trainers: list):
                     #check if user pokemon is knocked out
                     if user_hp == 0:
                         time.sleep(1)
-                        print(f"{trainer[0]}'s {trainer[1][pk_in_batlle_user][0][0]} fainted.")
+                        print(f"\n{trainer[0]}'s {trainer[1][pk_in_batlle_user][0][0]} fainted.")
                         user_pokemon_down += 1
                         if user_pokemon_down != kos_to_win:
                             pk_in_batlle_user = user_switch(trainer, pk_in_batlle_user, False)

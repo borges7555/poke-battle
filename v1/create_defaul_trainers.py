@@ -3,6 +3,7 @@ from returns import *
 
 def create_default_trainers(pokemon_data: list, tm_data: list) -> list[Trainer]:
     trainers = []
+    #Red
     Pikachu = return_pokemon_species("Pikachu", pokemon_data)
     MegaCharizardY = return_pokemon_species("Mega Charizard Y", pokemon_data)
     Blastoise = return_pokemon_species("Blastoise", pokemon_data)
@@ -24,13 +25,14 @@ def create_default_trainers(pokemon_data: list, tm_data: list) -> list[Trainer]:
     Red = create_Trainer("Red", Red_Team)
     trainers.append(Red)
 
+    #Lance
     Aerodactyl = return_pokemon_species("Aerodactyl", pokemon_data)
     MegaGyarados = return_pokemon_species("Mega Gyarados", pokemon_data)
     Garchomp = return_pokemon_species("Garchomp", pokemon_data)
     Charizard = return_pokemon_species("Charizard", pokemon_data)
     Dragonite = return_pokemon_species("Dragonite", pokemon_data)
     Lugia = return_pokemon_species("Lugia", pokemon_data)
-    Lance_Aerodactyl = create_TrainedPokemon(Aerodactyl, Aerodactyl[4:], return_TM("Stone Edge", tm_data), return_TM("Fly", tm_data), return_TM("Earthquake", tm_data), return_TM("Steel Wing", tm_data))
+    Lance_Aerodactyl = create_TrainedPokemon(Aerodactyl, Aerodactyl[4:], return_TM("Rock Slide", tm_data), return_TM("Fly", tm_data), return_TM("Earthquake", tm_data), return_TM("Thunder Fang", tm_data))
     Lance_MegaGyarados = create_TrainedPokemon(MegaGyarados, MegaGyarados[4:], return_TM("Waterfall", tm_data), return_TM("Earthquake", tm_data), return_TM("Crunch", tm_data), return_TM("Ice Fang", tm_data))
     Lance_Garchomp = create_TrainedPokemon(Garchomp, Garchomp[4:], return_TM("Outrage", tm_data), return_TM("Earthquake", tm_data), return_TM("Poison Jab", tm_data), return_TM("Crunch", tm_data))
     Lance_Charizard = create_TrainedPokemon(Charizard, Charizard[4:], return_TM("Flamethrower", tm_data), return_TM("Air Slash", tm_data), return_TM("Dragon Pulse", tm_data), return_TM("Scorching Sands", tm_data))
@@ -42,6 +44,22 @@ def create_default_trainers(pokemon_data: list, tm_data: list) -> list[Trainer]:
     trainers.append(Lance)
 
     #Steven
+    Archeops = return_pokemon_species("Archeops", pokemon_data)
+    Claydol = return_pokemon_species("Claydol", pokemon_data)
+    Aggron = return_pokemon_species("Aggron", pokemon_data)
+    Salamence = return_pokemon_species("Salamence", pokemon_data)
+    MegaMetagross = return_pokemon_species("Mega Metagross", pokemon_data)
+    PrimalKyogre = return_pokemon_species("Primal Kyogre", pokemon_data)
+    Steven_Archeops = create_TrainedPokemon(Archeops, Archeops[4:], return_TM("Rock Slide", tm_data), return_TM("Fly", tm_data), return_TM("Earthquake", tm_data), return_TM("Crunch", tm_data))
+    Steven_Claydol = create_TrainedPokemon(Claydol, Claydol[4:], return_TM("Psychic", tm_data), return_TM("Earth Power", tm_data), return_TM("Shadow Ball", tm_data), return_TM("Solar Beam", tm_data))
+    Steven_Aggron = create_TrainedPokemon(Aggron, Aggron[4:], return_TM("Earthquake", tm_data), return_TM("Iron Head", tm_data), return_TM("Rock Slide", tm_data), return_TM("Body Press", tm_data))
+    Steven_Salamence = create_TrainedPokemon(Salamence, Salamence[4:], return_TM("Outrage", tm_data), return_TM("Fly", tm_data), return_TM("Flamethrower", tm_data), return_TM("Shadow Claw", tm_data))
+    Steven_MegaMetagross = create_TrainedPokemon(MegaMetagross, MegaMetagross[4:], return_TM("Iron Head", tm_data), return_TM("Thunder Punch", tm_data), return_TM("Psychic Fangs", tm_data), return_TM("Body Press", tm_data))
+    Steven_PrimalKyogre = create_TrainedPokemon(PrimalKyogre, PrimalKyogre[4:], return_TM("Surf", tm_data), return_TM("Thunderbolt", tm_data), return_TM("Ice Beam", tm_data), return_TM("Brick Break", tm_data))
+
+    Steven_Team = create_PokemonTeam(Steven_Archeops, Steven_Claydol, Steven_Aggron, Steven_Salamence, Steven_MegaMetagross, Steven_PrimalKyogre)
+    Steven = create_Trainer("Steven", Steven_Team)
+    trainers.append(Steven)
 
     #Cynthia
 

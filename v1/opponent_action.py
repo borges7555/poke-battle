@@ -49,16 +49,16 @@ def opponent_choose_action(bot_trainer: Trainer, bot_pk_in_battle: int, user_tra
 def opponent_choose_attack(bot_trainer: Trainer, bot_pk_in_battle: int, user_trainer: Trainer, user_pk_in_battle: int) -> TM: #TODO:
     aux = 0
     for i in range(2, 5):
-        if calc_damage(bot_trainer[1][bot_pk_in_battle], user_trainer[1][user_pk_in_battle], bot_trainer[1][bot_pk_in_battle][i], False) > aux:
+        if bot_calc_damage(bot_trainer[1][bot_pk_in_battle], user_trainer[1][user_pk_in_battle], bot_trainer[1][bot_pk_in_battle][i], False) > aux:
             bot_chosen_tm = bot_trainer[1][bot_pk_in_battle][i]
-            aux = calc_damage(bot_trainer[1][bot_pk_in_battle], user_trainer[1][user_pk_in_battle], bot_trainer[1][bot_pk_in_battle][i], False)
+            aux = bot_calc_damage(bot_trainer[1][bot_pk_in_battle], user_trainer[1][user_pk_in_battle], bot_trainer[1][bot_pk_in_battle][i], False)
 
     return bot_chosen_tm
 
 
 def opponent_attacks(bot_trainer: Trainer, bot_pk_in_battle: int, bot_chosen_tm: TM, user_trainer: Trainer, user_pk_in_battle: int) -> int:
     print(f"\n{bot_trainer[1][bot_pk_in_battle][0][0]} used {bot_chosen_tm[0]}.")
-    damage = calc_damage(bot_trainer[1][bot_pk_in_battle], user_trainer[1][user_pk_in_battle], bot_chosen_tm, True)
+    damage = bot_calc_damage(bot_trainer[1][bot_pk_in_battle], user_trainer[1][user_pk_in_battle], bot_chosen_tm, True)
     time.sleep(1)
     print(f"It did {damage} damage.")
     if user_trainer[1][user_pk_in_battle][1][0] - damage < 0:

@@ -10,7 +10,11 @@ def user_create_trainer(pokemon_data: list, tm_data) -> Trainer:
     trainer.append(nickname)
     team = []
     used_pokemmons = []
-    legendaries = []
+    legendaries = ["Mewtwo", "Mega Mewtwo X", "Mega Mewtwo Y", "Lugia", "Ho-Oh", "Kyogre", "Primal Kyogre", "Groudon", "Primal Groudon", "Rayquaza", 
+                   "Mega Rayquaza", "Dialga", "Dialga Origin", "Palkia", "Palkia Origin", "Giratina", "Giratina Origin", "Reshiram", "Zekrom", "Kyurem", 
+                   "Kyurem Black", "Kyurem White", "Xerneas", "Yveltal", "Zygarde", "Solgaleo", "Lunala", "Dusk Mane Necrozma", "Dawn Wings Necrozma", 
+                   "Ultra Necrozma", "Zacian", "Zacian Crowned", "Zamazenta", "Zamazenta Crowned", "Eternatus", "Calyrex Ice Rider", "Calyrex Shadow Rider", 
+                   "Koraidon", "Miraidon", "Stellar Terapagos", "Arceus", "Hoopa Unbound", "Deoxys"]
     has_mega = False
     has_legendary = False
     i = 0
@@ -44,71 +48,78 @@ def user_create_trainer(pokemon_data: list, tm_data) -> Trainer:
         pokemon = return_pokemon_species(aux, pokemon_data)
         if pokemon is None:
             print("\nPokemon not found.")
-        elif pokemon in used_pokemmons:
+            continue
+
+        if pokemon in used_pokemmons:
             print("\nYou can't use the same pokemon more than once.")
-        elif has_mega and "Mega" in pokemon[0]:
+            continue
+
+        if has_mega and "Mega" in pokemon[0]:
             print("\nYou can only have one mega in your team.")
-        elif has_legendary and pokemon[0] in legendaries:
+            continue
+
+        if has_legendary and pokemon[0] in legendaries:
             print("\nYou can only have one legendary in your team.")
-        else:
-            if "Mega" in pokemon[0]:
-                has_mega = True
+            continue
 
-            if pokemon[0] in legendaries:
-                has_legendary = True
+        if "Mega" in pokemon[0]:
+            has_mega = True
 
-            if not show_picture(aux.lower()):
-                print(f"Couldn't show picture of {pokemon[0]}")
+        if pokemon[0] in legendaries:
+            has_legendary = True
 
-            used_pokemmons.append(pokemon)
-            chosen_pokemon.append(pokemon)
-            current_stats = pokemon[4:]
-            chosen_pokemon.append(current_stats)
-            k = 0
-            while k < 4:
-                print(f"Choose the TM number {k + 1} for {pokemon[0]}:")
-                aux = input()
-                #mostrar stats de tm se houver ' -s'
-                if " -s" in aux:
-                    tm = return_TM(aux.split(" -")[0], tm_data)
-                    if tm is None:
-                        print("\nTM not found.\n")
-                    else:
-                        print_tm_stats(tm)
+        if not show_picture(aux.lower()):
+            print(f"Couldn't show picture of {pokemon[0]}")
 
-                    continue
-                elif " -l" in aux: #lista todos os ataques do tipo
-                    exists = False
-                    print("")
-                    for move in tm_data:
-                        if aux.split(" -")[0].lower() == move[1].lower():
-                            exists = True
-                            print(move[0])
-
-                    if not exists:
-                        print(f"{aux.split(" -")[0].lower()} type doesn't exist.\n")
-                    else:
-                        print("")
-
-                    continue
-
-                print("")
-
-                tm = return_TM(aux, tm_data)
+        used_pokemmons.append(pokemon)
+        chosen_pokemon.append(pokemon)
+        current_stats = pokemon[4:]
+        chosen_pokemon.append(current_stats)
+        k = 0
+        while k < 4:
+            print(f"Choose the TM number {k + 1} for {pokemon[0]}:")
+            aux = input()
+            #mostrar stats de tm se houver ' -s'
+            if " -s" in aux:
+                tm = return_TM(aux.split(" -")[0], tm_data)
                 if tm is None:
-                    print("TM not found.")
-                elif tm in used_tms:
-                    print("\nYou can't use the same TM more than once in the same pokemon.")
+                    print("\nTM not found.\n")
                 else:
-                    if not is_tm_and_pokemon_compatible(tm, pokemon[0]):
-                        print("\nPlease choose a compatible TM.")
-                    else:
-                        used_tms.append(tm)
-                        chosen_pokemon.append(tm)
-                        k += 1
+                    print_tm_stats(tm)
 
-            team.append(chosen_pokemon)
-            i += 1
+                continue
+            elif " -l" in aux: #lista todos os ataques do tipo
+                exists = False
+                print("")
+                for move in tm_data:
+                    if aux.split(" -")[0].lower() == move[1].lower():
+                        exists = True
+                        print(move[0])
+
+                if not exists:
+                    print(f"{aux.split(" -")[0].lower()} type doesn't exist.\n")
+                else:
+                    print("")
+
+                continue
+
+            print("")
+
+            tm = return_TM(aux, tm_data)
+            if tm is None:
+                print("TM not found.")
+            elif tm in used_tms:
+                print("\nYou can't use the same TM more than once in the same pokemon.")
+            else:
+                if not is_tm_and_pokemon_compatible(tm, pokemon[0]):
+                    print("\nPlease choose a compatible TM.")
+                else:
+                    used_tms.append(tm)
+                    chosen_pokemon.append(tm)
+                    k += 1
+
+        team.append(chosen_pokemon)
+        i += 1
 
     trainer.append(team)
     return trainer
