@@ -78,6 +78,7 @@ def create_default_trainers(pokemon_data: list, tm_data: list) -> list[Trainer]:
     Cynthia_Team = create_PokemonTeam(Cynthia_Spiritomb, Cynthia_Magmortar, Cynthia_Milotic, Cynthia_Lucario, Cynthia_MegaGarchomp, Cynthia_GiratinaOrigin)
     Cynthia = create_Trainer("Cynthia", Cynthia_Team)
     trainers.append(Cynthia)
+
     #N
     Darmanitan = return_pokemon_species("Darmanitan", pokemon_data)
     #->Archeops
@@ -94,7 +95,23 @@ def create_default_trainers(pokemon_data: list, tm_data: list) -> list[Trainer]:
     N_Team = create_PokemonTeam(N_Carracosta, N_Darmanitan, N_Archeops, N_Conkeldurr, N_Zoroark, N_KyuremWhite)
     N = create_Trainer("N", N_Team)
     trainers.append(N)
+
     #Diantha
+    Heliolisk = return_pokemon_species("Heliolisk", pokemon_data)
+    Pyroar = return_pokemon_species("Pyroar", pokemon_data)
+    Aurorus = return_pokemon_species("Aurorus", pokemon_data)
+    Goodra = return_pokemon_species("Goodra", pokemon_data)
+    MegaGardevoir = return_pokemon_species("Mega Gardevoir", pokemon_data)
+    Zygarde = return_pokemon_species("Zygarde Complete", pokemon_data)
+    Diantha_Heliolisk = create_TrainedPokemon(Heliolisk, Heliolisk[4:], return_TM("Thunderbolt", tm_data), return_TM("Solar Beam", tm_data), return_TM("Surf", tm_data), return_TM("Focus Blast", tm_data))
+    Diantha_Pyroar = create_TrainedPokemon(Pyroar, Pyroar[4:], return_TM("Flamethrower", tm_data), return_TM("Hyper Voice", tm_data), return_TM("Solar Beam", tm_data), return_TM("Dark Pulse", tm_data))
+    Diantha_Aurorus = create_TrainedPokemon(Aurorus, Aurorus[4:], return_TM("Ice Beam", tm_data), return_TM("Meteor Beam", tm_data), return_TM("Earth Power", tm_data), return_TM("Dark Pulse", tm_data))
+    Diantha_Goodra = create_TrainedPokemon(Goodra, Goodra[4:], return_TM("Draco Meteor", tm_data), return_TM("Sludge Bomb", tm_data), return_TM("Surf", tm_data), return_TM("Flamethrower", tm_data))
+    Diantha_MegaGardevoir = create_TrainedPokemon(MegaGardevoir, MegaGardevoir[4:], return_TM("Psychic", tm_data), return_TM("Misty Explosion", tm_data), return_TM("Shadow Ball", tm_data), return_TM("Aura Sphere", tm_data))
+    Diantha_Zygarde = create_TrainedPokemon(Zygarde, Zygarde[4:], return_TM("Outrage", tm_data), return_TM("Earthquake", tm_data), return_TM("Crunch", tm_data), return_TM("Brick Break", tm_data))
+    Diantha_Team = create_PokemonTeam(Diantha_Heliolisk, Diantha_Pyroar, Diantha_Aurorus, Diantha_Goodra, Diantha_MegaGardevoir, Diantha_Zygarde)
+    Diantha = create_Trainer("Diantha", Diantha_Team)
+    trainers.append(Diantha)
 
     #Kukui
 
