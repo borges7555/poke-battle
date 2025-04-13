@@ -116,9 +116,39 @@ def create_default_trainers(pokemon_data: list, tm_data: list) -> list[Trainer]:
     #Kukui
 
     #Leon
+    Sirfetchd = return_pokemon_species("Sirfetch'd", pokemon_data)
+    Toxtricity = return_pokemon_species("Toxtricity", pokemon_data)
+    Rillaboom = return_pokemon_species("Rillaboom", pokemon_data)
+    Dragapult = return_pokemon_species("Dragapult", pokemon_data)
+    #->MegaCharizardY
+    ZacianCrowned = return_pokemon_species("Zacian Crowned", pokemon_data)
+    Leon_Sirfetchd = create_TrainedPokemon(Sirfetchd, Sirfetchd[4:], return_TM("Solar Blade", tm_data), return_TM("Close Combat", tm_data), return_TM("Brave Bird", tm_data), return_TM("Poison Jab", tm_data))
+    Leon_Toxtricity = create_TrainedPokemon(Toxtricity, Toxtricity[4:], return_TM("Thunderbolt", tm_data), return_TM("Sludge Wave", tm_data), return_TM("Psychic Noise", tm_data), return_TM("Hex", tm_data))
+    Leon_Rillaboom = create_TrainedPokemon(Rillaboom, Rillaboom[4:], return_TM("Solar Blade", tm_data), return_TM("Earthquake", tm_data), return_TM("U-Turn", tm_data), return_TM("Body Press", tm_data))
+    Leon_Dragapult = create_TrainedPokemon(Dragapult, Dragapult[4:], return_TM("Outrage", tm_data), return_TM("Phantom Force", tm_data), return_TM("Psychic Fangs", tm_data), return_TM("U-Turn", tm_data))
+    Leon_MegaCharizardY = create_TrainedPokemon(MegaCharizardY, MegaCharizardY[4:], return_TM("Flamethrower", tm_data), return_TM("Air Slash", tm_data), return_TM("Dragon Pulse", tm_data), return_TM("Scorching Sands", tm_data))
+    Leon_ZacianCrowned = create_TrainedPokemon(ZacianCrowned, ZacianCrowned[4:], return_TM("Iron Head", tm_data), return_TM("Close Combat", tm_data), return_TM("Play Rough", tm_data), return_TM("Wild Charge", tm_data))
+    Leon_Team = create_PokemonTeam(Leon_Sirfetchd, Leon_Toxtricity, Leon_Rillaboom, Leon_Dragapult, Leon_MegaCharizardY, Leon_ZacianCrowned)
+    Leon = create_Trainer("Leon", Leon_Team)
+    trainers.append(Leon)
 
     #Geeta
-
+    Kingambit = return_pokemon_species("Kingambit", pokemon_data)
+    Glimmora = return_pokemon_species("Glimmora", pokemon_data)
+    Espathra = return_pokemon_species("Espathra", pokemon_data)
+    Ceruledge = return_pokemon_species("Ceruledge", pokemon_data)
+    IronBundle = return_pokemon_species("Iron Bundle", pokemon_data)
+    Miraidon = return_pokemon_species("Miraidon", pokemon_data)
+    Geeta_Kingambit = create_TrainedPokemon(Kingambit, Kingambit[4:], return_TM("Foul Play", tm_data), return_TM("Iron Head", tm_data), return_TM("Earthquake", tm_data), return_TM("X-Scissor", tm_data))
+    Geeta_Glimmora = create_TrainedPokemon(Glimmora, Glimmora[4:], return_TM("Sludge Wave", tm_data), return_TM("Earth Power", tm_data), return_TM("Meteor Beam", tm_data), return_TM("Solar Beam", tm_data))
+    Geeta_Espathra = create_TrainedPokemon(Espathra, Espathra[4:], return_TM("Psychic", tm_data), return_TM("Dazzling Gleam", tm_data), return_TM("Shadow Ball", tm_data), return_TM("Energy Ball", tm_data))
+    Geeta_Ceruledge = create_TrainedPokemon(Ceruledge, Ceruledge[4:], return_TM("Flare Blitz", tm_data), return_TM("Poltergeist", tm_data), return_TM("Close Combat", tm_data), return_TM("Solar Blade", tm_data))
+    Geeta_IronBundle = create_TrainedPokemon(IronBundle, IronBundle[4:], return_TM("Hydro Pump", tm_data), return_TM("Ice Beam", tm_data), return_TM("Air Cutter", tm_data), return_TM("Tera Blast", tm_data))
+    Geeta_Miraidon = create_TrainedPokemon(Miraidon, Miraidon[4:], return_TM("Thunderbolt", tm_data), return_TM("Draco Meteor", tm_data), return_TM("Energy Ball", tm_data), return_TM("Overheat", tm_data))
+    Geeta_Team = create_PokemonTeam(Geeta_Espathra, Geeta_Glimmora, Geeta_Ceruledge, Geeta_Kingambit, Geeta_IronBundle, Geeta_Miraidon)
+    Geeta = create_Trainer("Geeta", Geeta_Team)
+    trainers.append(Geeta)
+    
     #Borges
 
     #Isaac

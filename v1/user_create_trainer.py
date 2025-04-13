@@ -31,6 +31,11 @@ def user_create_trainer(pokemon_data: list, tm_data, num_pk: int) -> Trainer:
         if aux == "exit":
             sys.exit(1)
 
+        if aux == "help":
+            help()
+            print("")
+            continue
+
         #mostrar stats de pokemon se houver ' -s'
         if " -s" in aux:
             pokemon = return_pokemon_species(aux.split(" -")[0], pokemon_data)
@@ -90,6 +95,11 @@ def user_create_trainer(pokemon_data: list, tm_data, num_pk: int) -> Trainer:
             if aux == "exit":
                 sys.exit(1)
                 
+            if aux == "help":
+                help()
+                print("")
+                continue
+            
             #mostrar stats de tm se houver ' -s'
             if " -s" in aux:
                 tm = return_TM(aux.split(" -")[0], tm_data)

@@ -29,6 +29,15 @@ def main() -> int:
         print("Choose how many pokemons both trainers will use (1-6):")
         num_pk = input()
         while num_pk not in ['1', '2', '3', '4', '5', '6']:
+            if num_pk == 'exit':
+                sys.exit(1)
+
+            if num_pk == 'help':
+                help()
+                print("\nChoose how many pokemons both trainers will use (1-6):")
+                num_pk = input()
+                continue
+            
             print("\nInvalid input. Try again.")
             num_pk = input()
 

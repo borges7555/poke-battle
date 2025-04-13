@@ -10,9 +10,8 @@ def help():
     print("While choosing a pokemon, if you don't know the exact the name of the pokemon you want but you know a part of it,")
     print("you can type that part followed by ' -l' and you will be shown all the pokemons that have that part in their name.")
     print("While choosing a TM, if you type a type followed by ' -l', you will be shown all TMs that are that type.")
-    print("Then, you choose the trainers you want to fight against.")
+    print("Then, you choose the trainer you want to fight against.")
     print("The order of which pokemon moves first is based on its speed stat.") 
-    print("In each turn, you have to choose an attack for your pokemon to use.")
 
 
 def print_pokemon_stats(pokemon_data: list):
