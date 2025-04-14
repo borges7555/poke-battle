@@ -162,7 +162,46 @@ def create_default_trainers(pokemon_data: list, tm_data: list) -> list[Trainer]:
     Geeta = create_Trainer("Geeta", Geeta_Team)
     trainers.append(Geeta)
     
+    #Past
+    BruteBonnet = return_pokemon_species("Brute Bonnet", pokemon_data)
+    GreatTusk = return_pokemon_species("Great Tusk", pokemon_data)
+    SandyShocks = return_pokemon_species("Sandy Shocks", pokemon_data)
+    SlitherWing = return_pokemon_species("Slither Wing", pokemon_data)
+    FlutterMane = return_pokemon_species("Flutter Mane", pokemon_data)
+    RoaringMoon = return_pokemon_species("Roaring Moon", pokemon_data)
+
+    Past_BruteBonnet = create_TrainedPokemon(BruteBonnet, BruteBonnet[4:], return_TM("Seed Bomb", tm_data), return_TM("Close Combat", tm_data), return_TM("Crunch", tm_data), return_TM("Zen Headbutt", tm_data))
+    Past_GreatTusk = create_TrainedPokemon(GreatTusk, GreatTusk[4:], return_TM("Earthquake", tm_data), return_TM("Close Combat", tm_data), return_TM("Temper Flare", tm_data), return_TM("Supercell Slam", tm_data))
+    Past_SandyShocks = create_TrainedPokemon(SandyShocks, SandyShocks[4:], return_TM("Thunderbolt", tm_data), return_TM("Earth Power", tm_data), return_TM("Flash Cannon", tm_data), return_TM("Power Gem", tm_data))
+    Past_SlitherWing = create_TrainedPokemon(SlitherWing, SlitherWing[4:], return_TM("Lunge", tm_data), return_TM("Close Combat", tm_data), return_TM("Flare Blitz", tm_data), return_TM("Dual Wingbeat", tm_data))
+    Past_FlutterMane = create_TrainedPokemon(FlutterMane, FlutterMane[4:], return_TM("Shadow Ball", tm_data), return_TM("Misty Explosion", tm_data), return_TM("Ice Beam", tm_data), return_TM("Psychic", tm_data))
+    Past_RoaringMoon = create_TrainedPokemon(RoaringMoon, RoaringMoon[4:], return_TM("Outrage", tm_data), return_TM("Crunch", tm_data), return_TM("Zen Headbutt", tm_data), return_TM("Fly", tm_data))
+
+    Past_Team = create_PokemonTeam(Past_BruteBonnet, Past_GreatTusk, Past_SandyShocks, Past_SlitherWing, Past_FlutterMane, Past_RoaringMoon)
+    Past = create_Trainer("Past", Past_Team)
+    trainers.append(Past)
+
+    #Future
+    IronTreads = return_pokemon_species("Iron Treads", pokemon_data)
+    IronThorn = return_pokemon_species("Iron Thorns", pokemon_data)
+    #->IronBundle
+    IronJugulis = return_pokemon_species("Iron Jugulis", pokemon_data)
+    IronMoth = return_pokemon_species("Iron Moth", pokemon_data)
+    IronValiant = return_pokemon_species("Iron Valiant", pokemon_data)
+
+    Future_IronTreads = create_TrainedPokemon(IronTreads, IronTreads[4:], return_TM("Earthquake", tm_data), return_TM("Iron Head", tm_data), return_TM("Ice Spinner", tm_data), return_TM("Zen Headbutt", tm_data))
+    Future_IronThorn = create_TrainedPokemon(IronThorn, IronThorn[4:], return_TM("Supercell Slam", tm_data), return_TM("Earthquake", tm_data), return_TM("Stone Edge", tm_data), return_TM("Fire Punch", tm_data))
+    Future_IronBundle = create_TrainedPokemon(IronBundle, IronBundle[4:], return_TM("Hydro Pump", tm_data), return_TM("Ice Beam", tm_data), return_TM("Air Cutter", tm_data), return_TM("Tera Blast", tm_data))
+    Future_IronJugulis = create_TrainedPokemon(IronJugulis, IronJugulis[4:], return_TM("Dark Pulse", tm_data), return_TM("Air Slash", tm_data), return_TM("Psychic", tm_data), return_TM("Earth Power", tm_data))
+    Future_IronMoth = create_TrainedPokemon(IronMoth, IronMoth[4:], return_TM("Flamethrower", tm_data), return_TM("Sludge Wave", tm_data), return_TM("Solar Beam", tm_data), return_TM("Bug Buzz", tm_data))
+    Future_IronValiant = create_TrainedPokemon(IronValiant, IronValiant[4:], return_TM("Close Combat", tm_data), return_TM("Future SIght", tm_data), return_TM("Play Rough", tm_data), return_TM("Shadow Ball", tm_data))
+    
+    Future_Team = create_PokemonTeam(Future_IronTreads, Future_IronThorn, Future_IronBundle, Future_IronJugulis, Future_IronMoth, Future_IronValiant)
+    Future = create_Trainer("Future", Future_Team)
+    trainers.append(Future)
+
     #Borges
+
 
     #Isaac
     Jolteon = return_pokemon_species("Jolteon", pokemon_data)
