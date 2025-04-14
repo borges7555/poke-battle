@@ -60,7 +60,6 @@ def user_create_trainer(pokemon_data: list, tm_data, num_pk: int) -> Trainer:
 
         pokemon = return_pokemon_species(aux, pokemon_data)
         if pokemon is None:
-            print("\nPokemon not found.")
             continue
 
         if pokemon in used_pokemmons:
@@ -128,8 +127,9 @@ def user_create_trainer(pokemon_data: list, tm_data, num_pk: int) -> Trainer:
 
             tm = return_TM(aux, tm_data)
             if tm is None:
-                print("TM not found.")
-            elif tm in used_tms:
+                continue
+
+            if tm in used_tms:
                 print("\nYou can't use the same TM more than once in the same Pokemon.")
             else:
                 if not is_tm_and_pokemon_compatible(tm, pokemon[0]):
