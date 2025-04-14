@@ -39,8 +39,10 @@ def print_pokemons_in_battle(trainer: Trainer, pk_in_batlle_user: int, user_hp: 
         print(f"HP: {opponent_hp}/{opponent[1][pk_in_batlle_opponent][0][4]}")
     else:
         print(f"Couldn't show picture of {opponent[1][pk_in_batlle_opponent][0][0]}")
+        print(f"\nHP: {opponent_hp}/{opponent[1][pk_in_batlle_opponent][0][4]}")
 
     if show_picture(trainer[1][pk_in_batlle_user][0][0].lower()):
         print(f"HP: {user_hp}/{trainer[1][pk_in_batlle_user][0][4]}")
     else:
         print(f"Couldn't show picture of {trainer[1][pk_in_batlle_user][0][0]}")
+        print(f"\nHP: {user_hp}/{trainer[1][pk_in_batlle_user][0][4]}")

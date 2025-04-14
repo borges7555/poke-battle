@@ -31,6 +31,7 @@ def user_attacks(trainer: Trainer, pk_in_battle_user: int, chosen_move: TM, oppo
     
     return opponent[1][pk_in_battle_opponent][1][0] - damage
 
+
 def user_status(trainer: Trainer, pk_in_battle_user: int, chosen_move: TM) -> list:
     print(f"\n{trainer[1][pk_in_battle_user][0][0]} used {chosen_move[0]}.")
     stats_names = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]
@@ -56,6 +57,7 @@ def user_status(trainer: Trainer, pk_in_battle_user: int, chosen_move: TM) -> li
 
     return pokemon_stats
 
+
 def user_switch(trainer: Trainer, pk_in_battle_user: int, show_0: bool = True) -> int:
     pokemon_hp = 0
     print("\nChoose a Pokemon to switch to:")
@@ -70,6 +72,8 @@ def user_switch(trainer: Trainer, pk_in_battle_user: int, show_0: bool = True) -
             print(f"HP: {pokemon[1][0]}/{pokemon[0][4]}")
             for move in pokemon[2:]:
                 print(f"    - {move[0]}")
+
+            print("")
 
         if show_0:
             print("\n0. Back")

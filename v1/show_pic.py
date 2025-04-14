@@ -20,6 +20,11 @@ def show_picture(name: str) -> bool:
         return show_pokemon_by_name(name.split(" ")[1], "primal")
     elif "incarnate" in name:
         return show_pokemon_by_name(name.split(" ")[0])
+    elif "urshifu" in name:
+        if "single" in name:
+            return show_pokemon_by_name(name.split(" ")[1])
+        elif "rapid" in name:
+            return show_pokemon_by_name(name.split(" ")[1])
     elif len(name.split(" ")) == 2:
         if not show_pokemon_by_name(name.split(" ")[0], name.split(" ")[1]):
             if not show_pokemon_by_name(name.split(" ")[1], name.split(" ")[0]):
